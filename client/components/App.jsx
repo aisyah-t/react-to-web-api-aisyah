@@ -5,10 +5,10 @@ import WidgetList from './WidgetList'
 import WidgetDetails from './WidgetDetails'
 import ErrorMessage from './ErrorMessage'
 
-import {getWidgets} from '../api'
+import { getWidgets } from '../api'
 
 export default class App extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.state = {
@@ -22,49 +22,47 @@ export default class App extends React.Component {
     this.refreshList = this.refreshList.bind(this)
     this.showDetails = this.showDetails.bind(this)
     this.hideDetails = this.hideDetails.bind(this)
-    this.renderWidgets = this.renderWidgets.bind(this)
+    // this.renderWidgets = this.renderWidgets.bind(this)
     this.showAddWidget = this.showAddWidget.bind(this)
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.refreshList()
   }
 
-  renderWidgets (err, widgets) {
-    this.setState({
-      error: err,
-      widgets: widgets || []
-    })
-  }
-
-  refreshList (err) {
+  refreshList(err) {
     this.setState({
       error: err,
       addWidgetVisible: false
     })
-    getWidgets(this.renderWidgets)
+    getWidgets()
+      .then(widgets => {
+        this.setState({
+          widgets: widgets || []
+        })
+      })
   }
 
-  showAddWidget () {
+  showAddWidget() {
     this.setState({
       addWidgetVisible: true
     })
   }
 
-  showDetails (widget) {
+  showDetails(widget) {
     this.setState({
       activeWidget: widget,
       detailsVisible: true
     })
   }
 
-  hideDetails () {
+  hideDetails() {
     this.setState({
       detailsVisible: false
     })
   }
 
-  render () {
+  render() {
     return (
       <div>
         <ErrorMessage error={this.state.error} />
