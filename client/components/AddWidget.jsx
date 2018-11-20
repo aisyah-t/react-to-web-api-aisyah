@@ -23,7 +23,7 @@ export default class AddWidget extends React.Component {
 
   addWidget (e) {
     appendWidget(this.state)
-    this.props.finishAdd()
+    this.props.refreshList()
   }
 
   render () {
@@ -48,7 +48,7 @@ export default class AddWidget extends React.Component {
           /></p>
           <button type='button' onClick={this.addWidget}>Add widget</button>
           {' '}
-          <a href='#' onClick={this.props.finishAdd}>Cancel</a>
+          <a href='#' onClick={this.props.refreshList}>Cancel</a>
         </form>
       </div>
     )
