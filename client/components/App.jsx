@@ -25,36 +25,41 @@ export default class App extends React.Component {
     this.showAddWidget = this.showAddWidget.bind(this)
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.refreshList()
   }
 
-  refreshList() {
+  refreshList () {
     this.setState({
       addWidgetVisible: false
     })
-    getWidgets()
+    getWidgets ()
       .then(widgets => {
         this.setState({
           widgets: widgets || []
         })
       })
+    .catch(err => {
+      this.setState({
+        error: err.message
+      })
+    })
   }
 
-  showAddWidget() {
+  showAddWidget () {
     this.setState({
       addWidgetVisible: true
     })
   }
 
-  showDetails(widget) {
+  showDetails (widget) {
     this.setState({
       activeWidget: widget,
       detailsVisible: true
     })
   }
 
-  hideDetails() {
+  hideDetails () {
     this.setState({
       detailsVisible: false
     })
@@ -77,7 +82,7 @@ export default class App extends React.Component {
         </p>
 
         {this.state.addWidgetVisible && <AddWidget
-          finishAdd={this.refreshList} />}
+          refreshList={this.refreshList} />}
 
         {this.state.detailsVisible && <WidgetDetails
           isVisible={this.state.detailsVisible}

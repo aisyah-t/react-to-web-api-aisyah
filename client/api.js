@@ -8,10 +8,6 @@ export function getWidgets() {
     .then(resp => {
       return resp.body
     })
-    .catch(err => {
-      // eslint-disable-next-line no-console
-      console.error(err)
-    })
 }
 
 export function appendWidget(widget) {
@@ -20,9 +16,5 @@ export function appendWidget(widget) {
     .send(widget)
     .then(res => {
       return res.body
-    })
-    .catch(err => {
-      // eslint-disable-next-line no-console
-      console.error(err)
     })
 }
