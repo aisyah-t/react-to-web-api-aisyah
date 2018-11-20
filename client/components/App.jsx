@@ -8,7 +8,7 @@ import ErrorMessage from './ErrorMessage'
 import { getWidgets } from '../api'
 
 export default class App extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
 
     this.state = {
@@ -65,7 +65,7 @@ export default class App extends React.Component {
     })
   }
 
-  render() {
+  render () {
     return (
       <div>
         <ErrorMessage error={this.state.error} />

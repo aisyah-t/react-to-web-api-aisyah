@@ -9,17 +9,17 @@ router.get('/', function (req, res) {
       res.send(widgets)
     })
     .catch(err => {
-      res.status(404).send(err.message)
+      res.status(500).send(err.message)
     })
 })
 
 router.post('/', function (req, res) {
   db.saveWidget(req.body)
-    .then((widget) => {
-      res.status(200).json(widget)
+    .then(widget => {
+      res.status(201).json(widget)
     })
     .catch((err) => {
-      res.status(404).send(err.message)
+      res.status(500).send(err.message)
     })
 })
 
