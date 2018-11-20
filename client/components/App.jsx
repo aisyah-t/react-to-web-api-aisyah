@@ -8,7 +8,7 @@ import ErrorMessage from './ErrorMessage'
 import { getWidgets } from '../api'
 
 export default class App extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
 
     this.state = {
@@ -25,11 +25,11 @@ export default class App extends React.Component {
     this.showAddWidget = this.showAddWidget.bind(this)
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.refreshList()
   }
 
-  refreshList() {
+  refreshList () {
     this.setState({
       addWidgetVisible: false
     })
@@ -41,26 +41,26 @@ export default class App extends React.Component {
       })
   }
 
-  showAddWidget() {
+  showAddWidget () {
     this.setState({
       addWidgetVisible: true
     })
   }
 
-  showDetails(widget) {
+  showDetails (widget) {
     this.setState({
       activeWidget: widget,
       detailsVisible: true
     })
   }
 
-  hideDetails() {
+  hideDetails () {
     this.setState({
       detailsVisible: false
     })
   }
 
-  render() {
+  render () {
     return (
       <div>
         <ErrorMessage error={this.state.error} />
