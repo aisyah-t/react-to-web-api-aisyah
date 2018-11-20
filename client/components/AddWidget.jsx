@@ -22,7 +22,8 @@ export default class AddWidget extends React.Component {
   }
 
   addWidget (e) {
-    appendWidget(this.state, this.props.finishAdd)
+    appendWidget(this.state)
+    this.props.finishAdd()
   }
 
   render () {

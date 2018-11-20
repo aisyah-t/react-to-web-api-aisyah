@@ -22,7 +22,6 @@ export default class App extends React.Component {
     this.refreshList = this.refreshList.bind(this)
     this.showDetails = this.showDetails.bind(this)
     this.hideDetails = this.hideDetails.bind(this)
-    // this.renderWidgets = this.renderWidgets.bind(this)
     this.showAddWidget = this.showAddWidget.bind(this)
   }
 
@@ -30,9 +29,8 @@ export default class App extends React.Component {
     this.refreshList()
   }
 
-  refreshList(err) {
+  refreshList() {
     this.setState({
-      error: err,
       addWidgetVisible: false
     })
     getWidgets()

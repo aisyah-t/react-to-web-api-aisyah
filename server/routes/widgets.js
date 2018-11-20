@@ -3,23 +3,24 @@ const router = express.Router()
 
 const db = require('../db/db.js')
 
-router.get('/', function(req, res) {
+router.get('/', function (req, res) {
   db.getWidgets()
     .then(widgets => {
       res.send(widgets)
     })
     .catch(err => {
-      res.status(500).send(err.message)
+      res.status(404).send(err.message)
     })
 })
 
-router.post('/', function(req, res) {
+router.post('/', function (req, res) {
   db.saveWidget(req.body)
-  // Normally saveWidget would be async and you'd
-  // have to sendStatus in the .then, but in this
-  // implementation, the data is stored in server
-  // memory and is done synchronously.
-  res.sendStatus(200)
+    .then((widget) => {
+      res.status(200).json(widget)
+    })
+    .catch((err) => {
+      res.status(404).send(err.message)
+    })
 })
 
 module.exports = router
