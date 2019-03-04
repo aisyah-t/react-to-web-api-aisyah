@@ -1,19 +1,20 @@
 import React from 'react'
 
-import {appendWidget} from '../api'
+import {updateWidget} from '../api'
 
-export default class AddWidget extends React.Component {
+export default class UpdateWidget extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      name: '',
-      price: '',
-      mfg: '',
-      inStock: '',
-      rating: ''
+      id: props.widget.id,
+      name: props.widget.name,
+      price: props.widget.price,
+      mfg: props.widget.mfg,
+      inStock: props.widget.inStock,
+      rating: props.widget.rating
     }
     this.handleChange = this.handleChange.bind(this)
-    this.addWidget = this.addWidget.bind(this)
+    this.updatedWidget = this.updatedWidget.bind(this)
   }
 
   handleChange (e) {
@@ -22,8 +23,8 @@ export default class AddWidget extends React.Component {
     })
   }
 
-  addWidget (e) {
-    appendWidget(this.state, this.props.finishAdd)
+  updatedWidget (e) {
+    updateWidget(this.state, this.props.finishAdd, this.props.showDetails(this.state))
   }
 
   render () {
@@ -50,9 +51,9 @@ export default class AddWidget extends React.Component {
             onChange={this.handleChange}
             value={this.state.rating}
           /></p>
-          <button type='button' onClick={this.addWidget}>Add widget</button>
+          <button type='button' onClick={this.updatedWidget}>Update details</button>
           {' '}
-          <a href='#' onClick={this.props.finishAdd}>Cancel</a>
+          <a href='#' onClick={() => this.props.showDetails(this.props.widget)}>Cancel</a>
         </form>
       </div>
     )
