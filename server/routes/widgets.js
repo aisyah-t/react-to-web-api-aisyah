@@ -18,4 +18,14 @@ router.post('/', (req, res) => {
     .then(res.sendStatus(200))
 })
 
+router.delete('/', (req, res) => {
+  db.deleteWidget(req.body)
+    .then(res.redirect('/'))
+})
+
+router.put('/', (req, res) => {
+  db.updateWidget(req.body)
+    .then(res.redirect('/'))
+})
+
 module.exports = router
