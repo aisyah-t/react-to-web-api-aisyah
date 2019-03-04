@@ -11,6 +11,7 @@ export default function WidgetDetails (props) {
       <p>Price: {widget.price}</p>
       <p>Mfg: {widget.mfg}</p>
       <p>In stock: {widget.inStock}</p>
+      <p>Rating: {widget.rating}</p>
       <a href='#' onClick={hideDetails}>Close</a>
     </div>
   )
