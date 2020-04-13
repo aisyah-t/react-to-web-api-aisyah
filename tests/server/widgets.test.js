@@ -1,28 +1,20 @@
 import request from 'supertest'
 
-import app from '../../server/server'
+import server from '../../server/server'
 
-// the server keeps the widgets in memory so no knex setup needed
-
-test('GET /api/v1/widgets', () => {
-  return request(app)
-    .get('/api/v1/widgets')
-    .expect(200)
-    .then(res => {
-      expect(res.body.length).toBe(3)
-    })
+jest.mock('../../server/db/db', () => {
+  return {
+    getWidgets: () => {
+      return Promise.resolve([{ id: 55 }, { id: 56 }, { id: 57 }])
+    }
+  }
 })
 
-test('POST /api/v1/widgets', () => {
-  return request(app)
-    .post('/api/v1/widgets')
-    .send({name: 'test'})
-    .expect(200)
+test('GET /api/v1/widgets', () => {
+  return request(server)
+    .get('/api/v1/widgets')
+    // .expect(200)
     .then(res => {
-      return request(app)
-        .get('/api/v1/widgets')
-        .then(res => {
-          expect(res.body.length).toBe(4)
-        })
+      expect(res.body.length).toBe(3)
     })
 })
