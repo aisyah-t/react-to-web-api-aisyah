@@ -6,3 +6,14 @@
   display: none;
 }
 
+article {
+  display: inline-block;
+  border-radius: 10px;
+  margin-right: 15px;
+  width: 200px;
+  background-color: teal;
+}
+
+.text {
+  margin: 10px;
+}
