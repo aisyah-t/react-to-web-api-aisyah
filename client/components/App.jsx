@@ -1,11 +1,16 @@
 import React from 'react'
+import {HashRouter as Router, Link} from 'react-router-dom'
+
+
+
 import { getWidgets } from '../api.js'
 import Widgets from './Widgets'
-import newWidget from './Form'
+import NewWidget from './Form'
 
 class App extends React.Component {
   state = {
-    widgets: []
+    widgets: [],
+    buttonClicked: false
   }
 
   componentDidMount() {
@@ -18,12 +23,32 @@ class App extends React.Component {
       })
   }
 
+  addWidget = (widget) => {
+
+  }
+
+  handleFormClick = () => {
+    if (this.state.buttonClicked === false) {
+      this.setState({
+        buttonClicked: true
+      })
+    } else if (this.state.buttonClicked === true) {
+      this.setState({
+        buttonClicked: false
+      })
+    }
+  }
+
   render() {
     console.log("did a rendery")
     return (
       <div>
-        <h1>Wiaadgets FTW!</h1>
-          <Widgets widgets={this.state.widgets}/>
+        <Router>
+          <h1>Wiaadgets FTW!</h1>
+          <Widgets widgets={this.state.widgets} />
+          <input type="submit" onClick={this.handleFormClick} value="Add widget"/>
+          {this.state.buttonClicked && <NewWidget addWidget={this.addWidget}/>}
+        </Router>
       </div>
     )
   }
