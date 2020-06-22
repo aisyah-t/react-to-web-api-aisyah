@@ -1,11 +1,7 @@
-import './setup-dom'
 import React from 'react'
-import Enzyme, {shallow, mount} from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
 
 import App from '../../client/components/App'
-
-Enzyme.configure({adapter: new Adapter()})
+import { shallow } from 'enzyme'
 
 App.prototype.componentDidMount = () => {}
 
@@ -14,18 +10,27 @@ test('Shows heading', () => {
   expect(wrapper.find('h1').text()).toBe('Widgets FTW!')
 })
 
+// Some tests have already been written for you.
+// See if you can get your components passing them...
+
+/*
 test('Renders widget list', () => {
   const wrapper = mount(<App />)
   expect(wrapper.find('.widget-list').exists()).toBeTruthy()
 })
+*/
 
+/*
 test('Renders add form when clicked', () => {
   const wrapper = mount(<App />)
   expect(wrapper.find('.add-widget').exists()).toBeFalsy()
   wrapper.find('#show-widget-link').simulate('click')
   expect(wrapper.find('.add-widget').exists()).toBeTruthy()
 })
+*/
 
+
+/*
 test('Shows widget details', () => {
   const widgets = [{name: 'red', id: 1}, {name: 'blue', id: 2}]
   const wrapper = mount(<App />)
@@ -37,3 +42,4 @@ test('Shows widget details', () => {
 
   expect(wrapper.find('.widget-details').exists()).toBeTruthy()
 })
+*/

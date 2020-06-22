@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const db = require('../db/db.js')
+const db = require('../db/db')
 
 router.get('/', (req, res) => {
   db.getWidgets()
@@ -13,9 +13,5 @@ router.get('/', (req, res) => {
     })
 })
 
-router.post('/', (req, res) => {
-  db.saveWidget(req.body)
-    .then(res.sendStatus(200))
-})
 
 module.exports = router

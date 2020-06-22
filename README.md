@@ -1,6 +1,6 @@
 # A example React project that calls a local web API
 
-This is a starter project that illustrates React components consuming a web API.
+This is a starter project to illustrate React components consuming a web API.
 
 
 ## Steps
@@ -12,49 +12,64 @@ To experience this repo in all of its glory:
 ```sh
 cd react-to-web-api
 npm install
+npx knex migrate:latest
+npx knex seed:run
 npm run dev
 ```
 
 * Navigate to [http://localhost:3000](http://localhost:3000)
 
 
-## Exercise options
+## Exercise
 
-* Understand where and how each component is being used (you will find some code you can reuse. Remember DRY!)
+### Getting Started
 
-  - Make small changes to confirm your hypotheses
-  - Reset all changes you've made since last commit with `git checkout .`
+In this execise reverses the roles from yesterday. Today the API has been (partially) built for you. Your job will be to build the React front end to consume the API. To do this you will need to call the API from a React component using the node module `superagent`, and save the resulting data into state.
 
-* The database can be updated by many users. Simulate this by making a 'refresh button'. You may have seen some functionality do something similar already. Open a second browser tab and make a new record for the list. Then, click your refresh button on your original tab and see if your component renders the new entry you created.  
-Example steps you may take to complete this task: 
+### Steps
 
-  - [ ] 1. Build the button and get it to log something when you click it
-  - [ ] 2. Get the click to send a GET request to your API, and get the server to log something to show that the request has been made sucessfully
-  - [ ] 3. Get the server to respond with the list of current records/widgets.
-  - [ ] 4. Get the client-side to receive the response from the server, and update the client-side state so you can now see all the new records
+0. Take a look around your project to make sure you're familiar with the layout. Take particular note of what is in your client folder, and the setup of your server routes in the back end.
 
-* Extend the details that are stored in widgets - add a `rating` field to what is displayed and on the add form
+1. Convert the App component to a stateful component. Make sure it still renders on localhost.
 
-* Add the ability to delete a widget
+2. Add a componentDidMount method to the class. Add the following `console.log`s to the componentDidMount and render methods so we can see what's happening.
 
-* Add the ability to update a widget
+``` js
+console.log('did mount')
+``` 
 
-  - [ ] 1. Build the button and get it to log something when you click it
-  - [ ] 2. Get the click to send something to your API, and get the server to prove it received something
-  - [ ] 3. Get the server to save something sent with click. Find a way to check something was save to the 'database' (remember we're only storing the database in memory in this exercise)
-  - [ ] 4. Get the server to send a message back to the user, and kick off some update of the user interface (you might want to force it to get all items again, like in the _refresh button_ case)
+``` js
+console.log('render')
+``` 
 
-* Add more components and write tests for them in `test` (the tests can be run with `npm test`)
+3. Reload the page with the dev tools console open.  Notice the order that the `console.log`s occur in. What does this mean for your code?
 
+4. Add a widgets property to the state. Make the initial value an empty array.
 
-## CORS
+5. Import the `api.js` file into the App file.  
 
-When using `npm start` and `npm run dev`, the client is served from the same the port as the API. In this scenario we don't run into the limitations of CORS (cross-origin resource sharing). However, if we want to expose our API to clients hosted at different domain names and/or ports, we must enable this by configuring our CORS configuration.
+6. In your componentDidMount method, call the `getWidgets` function from your `api.js` file.  
+   - Remember superagent uses a promise-based interface, so you will need a `then()` block after this.
 
-To experience the effects of CORS:
+7. Use the `this.setState` function inside the then block to update state with the API widget data.
 
-* Run `npm run dev:server` in one terminal to expose the API on port 3000.
-* Run `npm run webpack:server` in a different terminal to serve the client on port 8080.
-* Visit [http://localhost:8080](http://localhost:8080) and the site should continue to work fine.
-* Have a look at how the Express middleware uses the `cors` package in `server/server.js`. Try commenting out that line and restarting `npm start`. Refresh the app and you should see errors. Read more about how to configure the [`cors` package](https://npmjs.org/package/cors) and try different configurations.
+8. Use the React Dev Tools to check that state updates as you expect.
+
+9. Modify the render method of your component to display the widgets. Perhaps you could use a `.map` here to render a new `<Widget />` component for each widget.
+
+### Next Steps
+
+These next steps will require you to make changes to both the front and back end.
+
+- Add the ability to add a widget. This will also require adding a form component (a great opportunity to try a conditional render too!)
+
+- Extend the details that are stored about widgets - add a `rating` field so we know how good those widgets really are. This will need to be added on in what is displayed and also onto the fields of the add form.
+
+- Add the ability to delete a widget
+
+- Add the ability to update a widget
+
+- Refactor your code into separate components (if it isn't already)
+
+- Write tests for your components in the `tests` directory. Some tests have already been written for you. Either try to make your code pass these, or rewrite them to match your own layout.
 
