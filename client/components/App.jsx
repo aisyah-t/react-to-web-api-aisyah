@@ -1,6 +1,7 @@
 import React from 'react'
 import { getWidgets } from '../api.js'
 import Widgets from './Widgets'
+import newWidget from './Form'
 
 class App extends React.Component {
   state = {

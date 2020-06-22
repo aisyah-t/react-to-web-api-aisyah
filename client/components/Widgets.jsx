@@ -4,8 +4,8 @@ class Widgets extends React.Component {
     render() {
         return (
             <ul>   
-                {this.props.widgets.map((widget, i) => {
-                    return <li key={i}>{widget.name}</li>
+                {this.props.widgets.map((widget) => {
+                    return <li key={widget.id} id={widget.id}>{widget.name}, {widget.mfg} In stock: {widget.inStock}</li>
                 })}
             </ul>
         )
