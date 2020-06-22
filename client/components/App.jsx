@@ -13,7 +13,7 @@ class App extends React.Component {
     getWidgets()
       .then(widget => {
         this.setState({
-          widgets: widget
+          widgets: widget,
         })
       })
   }
@@ -21,13 +21,28 @@ class App extends React.Component {
   render () {
     console.log('render')
     return (
+    <>
       <div>
         <h1>Widgets FTW!</h1>
         {this.state.widgets.map(widget => {
-          console.log(widget)
           return <Widget key={widget.id} data={widget}/>
         })}
       </div>
+      {/* <div>
+        <form onSubmit={this.onSubmitHandle.bind(this)}>  
+          <input type="text" name="item" className="item"/>        
+          <button className="btn-add-item">Add</button>
+        </form>
+        <ul>{this.state.mockData.map(item => (          
+          <li key={item.id}>{item.title}
+            <button onClick={this.onDeleteHandle.bind(this, item.id)}>Delete</button> 
+            <button onClick={this.onEditHandle.bind(this, item.id, item.title)}>Edit</button>
+            <button onClick={this.onCompleteHandle}>Complete</button>
+          </li>
+          ))}
+        </ul>
+      </div> */}
+    </>
     )
   }
 }
