@@ -1,7 +1,14 @@
-// const App = () => {
-//     return (
-//       <div>
-//         <h1>Widgets FTW!</h1>
-//       </div>
-//     )
-// }
+import React from 'react'
+
+const Widget = (props) => {
+    return (
+      <div className='widget'>
+        <h1>Widget</h1>
+        <h3>{props.widget.name}</h3>
+        <p>In stock: {props.widget.inStock}</p>
+        <p>MFG: {props.widget.mfg}</p>
+      </div>
+    )
+}
+
+export default Widget

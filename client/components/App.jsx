@@ -1,5 +1,6 @@
 import React from 'react'
 import { getWidgets } from '../api'
+import Widget from './Widget'
 
 class App extends React.Component {
   state = {
@@ -22,7 +23,11 @@ componentDidMount() {
     console.log('render')
     return (
       <div>
-        <h1>Widgets FTW!</h1>
+        <h1>Widgets FTW!</h1>{
+          this.state.widgets.map(widget => {
+            return <Widget widget={widget}/>
+          })
+        }
       </div>
     )
   }
