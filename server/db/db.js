@@ -20,3 +20,4 @@ function saveWidget(widget, db = connection) {
       inStock: widget.inStock
   })
 }
+

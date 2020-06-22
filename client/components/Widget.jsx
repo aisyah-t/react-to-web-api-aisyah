@@ -5,6 +5,7 @@ const Widget = (props) => {
       <div className='widget'>
         <h1>Widget</h1>
         <h3>{props.widget.name}</h3>
+        <h3>{props.widget.price}</h3>
         <p>In stock: {props.widget.inStock}</p>
         <p>MFG: {props.widget.mfg}</p>
       </div>
