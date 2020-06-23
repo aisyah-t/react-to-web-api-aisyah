@@ -1,6 +1,6 @@
 import React from 'react'
 
-class NewWidget extends React.Component {
+class AddWidget extends React.Component {
     state = {
         widget: {}
     }
@@ -27,6 +27,7 @@ class NewWidget extends React.Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
+                <label>Add a widget:</label>
                 <label >Name: </label>
                 <input type="text" name="name" onChange={this.handleChange} />
                 <br />
@@ -54,4 +55,4 @@ class NewWidget extends React.Component {
 }
 
 
-export default NewWidget
+export default AddWidget

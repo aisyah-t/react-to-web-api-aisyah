@@ -4,8 +4,8 @@ import {HashRouter as Router, Link} from 'react-router-dom'
 
 import { getWidgets, saveWidget } from '../api.js'
 import Widgets from './Widgets'
-import NewWidget from './Form'
-import DelWidget from './DeleteWidget'
+import AddWidget from './AddWidget'
+import DeleteWidget from './DeleteWidget'
 
 class App extends React.Component {
   state = {
@@ -27,7 +27,7 @@ class App extends React.Component {
     saveWidget(widget)
     .then((widget)=>{
       this.setState({
-        widgets:widget
+        widgets: widget
       })
     })
   }
@@ -35,11 +35,13 @@ class App extends React.Component {
   handleFormClick = () => {
     if (this.state.buttonClicked === false) {
       this.setState({
-        buttonClicked: true
+        buttonClicked: true,
+        deleteButtonClicked: false
       })
     } else if (this.state.buttonClicked === true) {
       this.setState({
-        buttonClicked: false
+        buttonClicked: false,
+        deleteButtonClicked: false
       })
     }
   }
@@ -47,11 +49,13 @@ class App extends React.Component {
   handleDeleteFormClick = () => {
     if (this.state.deleteButtonClicked === false) {
       this.setState({
-        deleteButtonClicked: true
+        deleteButtonClicked: true,
+        buttonClicked: false
       })
     } else if (this.state.deleteButtonClicked === true) {
       this.setState({
-        deleteButtonClicked: false
+        deleteButtonClicked: false,
+        buttonClicked: false
       })
     }
   }
@@ -64,8 +68,8 @@ class App extends React.Component {
           <Widgets widgets={this.state.widgets} />
           <input type="submit" onClick={this.handleFormClick} value="Add widget"/>
           <input type="submit" onClick={this.handleDeleteFormClick} value="Delete widget" />
-          {this.state.buttonClicked && <NewWidget addWidget={this.addWidget}/>}
-          {this.state.deleteButtonClicked && <DelWidget delWidget={this.delWidget}/>}
+          {this.state.buttonClicked && <AddWidget addWidget={this.addWidget}/>}
+          {this.state.deleteButtonClicked && <DeleteWidget widgets={this.state.widgets}/>}
         </Router>
       </div>
     )
