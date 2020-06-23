@@ -1,4 +1,6 @@
 import React from 'react'
+import { saveWidget } from '../api'
+    
 
 class Form extends React.Component {
     state = {
@@ -11,11 +13,10 @@ class Form extends React.Component {
     handleSubmit = (event) => {
         event.preventDefault()
         this.props.createWidget(this.state)
+        .then(() => this.props.refreshList())
     }
 
     handleChange = (event) => {
-        // console.log('change', event.target.name)
-
         this.setState({
             [event.target.name]: event.target.value
         })

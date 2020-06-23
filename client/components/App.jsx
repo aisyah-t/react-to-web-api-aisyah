@@ -17,9 +17,7 @@ handleClick = (e) => {
   })
 }
 
-
-componentDidMount() {
-  console.log('did mount')
+refreshList = () => {
   getWidgets()
 
   .then(widgets => {
@@ -27,10 +25,15 @@ componentDidMount() {
   })
 }
 
-createWidget(widget) {
-  // console.log(widget)
-  saveWidget(widget)
+componentDidMount() {
+  console.log('did mount')
+ this.refreshList()
 }
+
+componentDidUpdate() {
+  console.log("update")
+}
+
 
   render() {
     console.log('render')
@@ -43,7 +46,7 @@ createWidget(widget) {
         }
         
         <button onClick={this.handleClick}>Add a new widget</button>
-        {this.state.form && <Form createWidget={this.createWidget}/>}
+        {this.state.form && <Form createWidget={this.createWidget} refreshList={this.refreshList}/>}
       </div>
     )
   }

@@ -15,10 +15,10 @@ router.get('/', (req, res) => {
 
 router.post('/save', (req, res) => {
   const widget = req.body
-  console.log("req.body", widget)
+
   db.saveWidget(widget)
   .then(() => {
-    db.getWidgets()
+    return db.getWidgets()
   })
   .then(widgets => {
     res.send(widgets)
@@ -27,6 +27,23 @@ router.post('/save', (req, res) => {
     res.status(500).send(err.message)
   })
 })
+
+
+// router.post('/save', (req, res) => {
+//   const widget = req.body
+  
+//   db.saveWidget(widget)
+//   .then(() => {
+//     return db.getWidgets()
+//   })
+//   .then(widgets => {
+//     res.send(widgets)
+//   })
+//   .catch(err => {
+//     res.status(500).send(err.message)
+//   })
+// })
+
 
 
 module.exports = router
