@@ -43,6 +43,10 @@ class NewWidget extends React.Component {
                 <input type="text" name="price" onChange={this.handleChange} />
                 <br />
 
+                <label >Rating: </label>
+                <input type="text" name="rating" onChange={this.handleChange} />
+                <br />
+
                 <button type='submit'>NEW WIDGET!</button>
             </form>
         )

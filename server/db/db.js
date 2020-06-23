@@ -17,6 +17,7 @@ function saveWidget(widget, db = connection) {
       name: widget.name,
       price: widget.price,
       mfg: widget.mfg,
-      inStock: widget.inStock
+      inStock: widget.inStock,
+      rating:widget.rating
   })
 }
