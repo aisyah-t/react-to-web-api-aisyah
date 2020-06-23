@@ -1,4 +1,6 @@
 import React from 'react'
+import {addWidget} from '../api'
+
 
 class Form extends React.Component {
 
@@ -7,13 +9,26 @@ class Form extends React.Component {
     price: '',
     mfg: '',
     inStock: '',
+    raiting:'',
   }
 
   handleChange = event => {
     this.setState({
+
       [event.target.name]: event.target.value
     })
   }
+
+ handleSubmit = event =>{
+ 
+  event.preventDefault()
+   
+  addWidget(this.state)
+   .then(() => {
+  
+     this.props.refreshWidgets()
+   })
+ }
 
   render() {
     return (
@@ -38,7 +53,11 @@ class Form extends React.Component {
           InStock:
           <input type="text" name="inStock" onChange={this.handleChange} />
         </lable>
-
+        
+        <label>
+          Rating:
+          <input type="text" nam="rating" onChange={this.handleChange}/>
+        </label>
 
         <input type="submit" value="Save" />
       </form>

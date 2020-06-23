@@ -11,7 +11,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log('did mount');
+    // console.log('did mount');
     getWidgets()
       .then(widget => {
         this.setState({
@@ -20,13 +20,26 @@ class App extends React.Component {
       })
   }
 
+  componentDidUpdate() {
+
+  }
+
+  refreshWidgets = () => {
+    getWidgets()
+    .then(widget => {
+      this.setState({
+        widget: widget
+      })
+    })
+  }
+
   render() {
-    console.log('render');
+    // console.log('render');
     return (
       <div>
         <h1>Widgets FTW!</h1>
         <Widget widgets={this.state.widget}/>
-        <Form/>
+        <Form refreshWidgets={this.refreshWidgets} />
       </div>
     )
   }

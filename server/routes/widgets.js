@@ -14,4 +14,20 @@ router.get('/', (req, res) => {
 })
 
 
+router.post('/', (req, res)=>{
+
+  const widget = req.body
+  console.log(widget)
+  
+ db.saveWidget(widget)
+ .then(widget =>{
+
+  res.send(widget)
+ })
+ .catch(err => {
+  res.status(500).send(err.message)
+})
+
+})
+
 module.exports = router
