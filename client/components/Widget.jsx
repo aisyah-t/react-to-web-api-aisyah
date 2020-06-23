@@ -17,6 +17,9 @@ const Widget = props => {
                     <p> 
                         Stock:  {props.data.inStock}
                     </p>
+                    <p> 
+                        Rating:  {props.data.rating}
+                    </p>
             </div>
         </article>
     )

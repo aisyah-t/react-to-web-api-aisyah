@@ -7,6 +7,7 @@ class Form extends React.Component {
         price: " ",
         mfg: " ",
         inStock: " ",
+        rating: " ",
     }
 
     handleSubmit = event => {
@@ -47,6 +48,9 @@ class Form extends React.Component {
 
                     <label>Stock:</label>
                     <input type="text" name="inStock" value={this.state.inStock} onChange={this.handleChange}/>
+
+                    <label>Rating:</label>
+                    <input type="text" name="rating" value={this.state.rating} onChange={this.handleChange}/>
 
                     <button type="submit">Submit</button>
                 </form>
