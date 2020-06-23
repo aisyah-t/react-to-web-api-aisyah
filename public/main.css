@@ -23,6 +23,10 @@ label {
   display: block;
 }
 
+ .radio-buttons label{
+  display: inline-block;
+}
+
 input[type="submit"]{
   display: block;
 }

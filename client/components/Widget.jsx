@@ -8,6 +8,7 @@ const Widget = (props) => {
         <h3>{props.widget.price}</h3>
         <p>In stock: {props.widget.inStock}</p>
         <p>MFG: {props.widget.mfg}</p>
+        <p>Rating: {props.widget.rating}</p>
       </div>
     )
 }
