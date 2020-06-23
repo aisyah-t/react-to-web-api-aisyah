@@ -4,6 +4,8 @@ import { saveWidget } from '../api'
 import Widget from './Widget'
 import Form from './Form'
 import request from 'superagent'
+import { deleteWidget } from '../api'
+
 
 class App extends React.Component {
   state = {
@@ -15,6 +17,11 @@ handleClick = (e) => {
   this.setState({
     form: true,
   })
+}
+
+handleDeleteClick = (e) => {
+  deleteWidget(event.target.id)
+  this.refreshList()
 }
 
 refreshList = () => {
@@ -30,18 +37,13 @@ componentDidMount() {
  this.refreshList()
 }
 
-componentDidUpdate() {
-  console.log("update")
-}
-
-
   render() {
     console.log('render')
     return (
       <div>
         <h1>Widgets FTW!</h1>{
           this.state.widgets.map(widget => {
-            return <Widget key={widget.id} widget={widget}/>
+            return <Widget key={widget.id} widget={widget} handleDeleteClick={this.handleDeleteClick}/>
           })
         }
         

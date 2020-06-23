@@ -15,5 +15,10 @@ export function saveWidget (widget) {
     .then(response => response.body)
 }
 
+export function deleteWidget (id) {
+  return request
+  .delete(`${widgetUrl}/${id}`)
+  .then(response => response)
+}
 
 
