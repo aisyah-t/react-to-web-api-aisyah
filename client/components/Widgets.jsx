@@ -9,13 +9,15 @@ class Widgets extends React.Component {
             <div>
                 {this.props.widgets.map(widget => {
                     return (
-                        <>
-                            <h4>Name: {widget.name}</h4>
-                            <p>Price: {widget.price}</p>
-                            <p>Manufacturing Group: {widget.mfg}</p>
-                            <p>In stock:{widget.inStock}</p>
-                            <p>Rating:{widget.rating}</p>
-                        </>
+                        <main>
+                            <h4>{widget.name}</h4>
+                            <ul>
+                                <li>Price: {widget.price}</li>
+                                <li>Manufacturing Group: {widget.mfg}</li>
+                                <li>In stock:{widget.inStock}</li>
+                                <li>Rating:{widget.rating}</li>
+                            </ul>
+                        </main>
                     )
                 })}
             </div>
