@@ -13,5 +13,17 @@ router.get('/', (req, res) => {
     })
 })
 
+router.post('/', (req, res) => {
+  const newWidget = req.body
+  console.log(newWidget)
+
+  db.saveWidget(newWidget)
+    .then(widgetId => {
+      res.send(widgetId)
+    })
+    .catch(err => {
+      res.status(500).send(err.message)
+    })
+})
 
 module.exports = router

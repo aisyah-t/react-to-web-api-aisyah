@@ -1,6 +1,7 @@
 import React from 'react'
 import { getWidgets } from '../api'
 import Widgets from './Widgets'
+import AddWidget from './AddWidget'
 
 class App extends React.Component {
 
@@ -22,6 +23,7 @@ class App extends React.Component {
       <div>
         <h1>Widgets FTW!</h1>
         <Widgets widgets = {this.state.widgets}/>
+        <AddWidget />
       </div>
     )
 
