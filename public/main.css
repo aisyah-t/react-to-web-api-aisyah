@@ -6,3 +6,10 @@
   display: none;
 }
 
+.container {
+  display: flex
+}
+
+.bold_text {
+  font-weight: bold;
+}

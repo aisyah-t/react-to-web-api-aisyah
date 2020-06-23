@@ -1,9 +1,6 @@
 import React from 'react'
 
 class DeleteWidget extends React.Component {
-  state = {
-    widget: {}
-  }
 
   handleDelClick = (e) => {
     e.preventDefault()

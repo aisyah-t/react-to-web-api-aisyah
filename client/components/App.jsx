@@ -1,11 +1,12 @@
 import React from 'react'
-import {HashRouter as Router, Link} from 'react-router-dom'
+import {HashRouter as Router, Route, Link} from 'react-router-dom'
 
 
 import { getWidgets, saveWidget, delWidget } from '../api.js'
 import Widgets from './Widgets'
 import NewWidget from './Form'
 import DeleteWidget from './Delete'
+import EditWidget from './Edit'
 
 class App extends React.Component {
   state = {
@@ -41,6 +42,15 @@ class App extends React.Component {
     })
   }
 
+  // updateWidget = (widget) => {
+  //   editWidget(widget)
+  //   .then(widget => {
+  //     this.setState({
+  //       widgets:widget
+  //     })
+  //   })
+  // }
+
   handleFormClick = () => {
     if (this.state.buttonClicked === false) {
       this.setState({
@@ -70,8 +80,12 @@ class App extends React.Component {
       <div>
         <Router>
           <h1>Wiaadgets FTW!</h1>
+          <div className = "container">
 
           <Widgets widgets={this.state.widgets} />
+
+          <Route exact path="/edit/:id" widgets={this.state.widgets} component={EditWidget}/>
+          </div><br/>
 
           <input type="submit" onClick={this.handleFormClick} value="Add widget"/>
           <br/>
@@ -79,8 +93,10 @@ class App extends React.Component {
           {this.state.buttonClicked && <NewWidget addWidget={this.addWidget}/>}
 
           <input type="submit" onClick={this.handleRemoveClick} value="Delete widget"/>
+          <br/>
 
           {this.state.removeButton && <DeleteWidget widgets={this.state.widgets} removeWidget={this.removeWidget}/>}
+
 
         </Router>
       </div>
