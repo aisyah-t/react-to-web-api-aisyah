@@ -1,5 +1,6 @@
 import React from 'react'
 import {HashRouter as Router, Link} from 'react-router-dom'
+import db from '../../server/db/db'
 
 
 
@@ -24,7 +25,10 @@ class App extends React.Component {
   }
 
   addWidget = (widget) => {
-
+    db.saveWidget(widget)
+    .then(()=>{
+      console.log('added')
+    })
   }
 
   handleFormClick = () => {

@@ -6,9 +6,6 @@ class NewWidget extends React.Component {
     }
 
     handleChange = (e) => {
-        // console.log(e.target.value)
-        // console.log(e.target.name)
-
         this.setState({
             widget: {
                 ...this.state.widget,
@@ -23,12 +20,9 @@ class NewWidget extends React.Component {
         e.preventDefault()
         console.log(this.state.widget)
 
-        // this.props.addWidget({
-        //     name: this.name.value,
-        //     mfg: this.mfg.value,
-        //     inStock: this.inStock.value,
-        //     price: this.price.value
-        // }, ()=>{console.log(this.state)})
+        this.props.addWidget(
+           this.state.widget
+        )
     }
 
 
@@ -51,7 +45,7 @@ class NewWidget extends React.Component {
                 <input type="text" name="price" onChange={this.handleChange} />
                 <br />
 
-                <button onClick={this.handleSubmit} type='submit'>NEW WIDGET!</button>
+                <button type='submit'>NEW WIDGET!</button>
             </form>
         )
     }
