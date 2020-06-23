@@ -6,7 +6,6 @@ function getWidgets(db = connection) {
   return db('widgets').select()
 }
 
-
 function saveWidget(widget, db = connection) {
   return db('widgets')
   .insert({
@@ -14,7 +13,6 @@ function saveWidget(widget, db = connection) {
     price: widget.price,
     mfg: widget.mfg,
     inStock: widget.inStock,
-    rating: widget.rating,
   })
 }
 

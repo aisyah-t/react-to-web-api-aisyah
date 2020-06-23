@@ -1,4 +1,5 @@
 import React from 'react'
+import { saveWidget } from "../api"
 
 class Form extends React.Component {
     state = {
@@ -9,10 +10,12 @@ class Form extends React.Component {
     }
 
     handleSubmit = event => {
+        //disable automatic submit
         event.preventDefault()
-        addWidget(this.state)
+        //use imported function to push new object to widgets array in app
+        saveWidget(this.state)
         .then(newWidget => {
-          this.props.addWidget(newWidget)
+          this.props.saveWidget(newWidget)
         })
     }
 
@@ -27,6 +30,8 @@ class Form extends React.Component {
     }
     
     render() {
+        //inside form element onSubmit dictate what happens when form is submitted
+        //in normal express this would be action='POST'
         return (
             <div className="create">
                 <h3>Create your own Widget!</h3>

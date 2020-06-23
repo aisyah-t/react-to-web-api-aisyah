@@ -28,15 +28,13 @@ class App extends React.Component {
   render () {
     console.log('render')
     return (
-    <>
-      <div>
-        <h1>Widgets FTW!</h1>
-        {this.state.widgets.map(widget => {
-          return <Widget key={widget.id} data={widget}/>
-        })}
-      </div>
-        <Form addWidget={this.addWidget}/>
-    </>
+    <div>
+      <h1>Widgets FTW!</h1>
+      {this.state.widgets.map(widget => {
+        return <Widget key={widget.id} data={widget}/>
+      })}
+      <Form addWidget={this.addWidget}/>
+    </div>
     )
   }
 }
