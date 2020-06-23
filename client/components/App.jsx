@@ -1,10 +1,8 @@
 import React from 'react'
 import {HashRouter as Router, Link} from 'react-router-dom'
-import db from '../../server/db/db'
 
 
-
-import { getWidgets } from '../api.js'
+import { getWidgets, saveWidget } from '../api.js'
 import Widgets from './Widgets'
 import NewWidget from './Form'
 
@@ -15,7 +13,6 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log("did a mounty")
     getWidgets()
       .then((widgets) => {
         this.setState({
@@ -25,10 +22,11 @@ class App extends React.Component {
   }
 
   addWidget = (widget) => {
-    console.log(widget)
-    db.saveWidget(widget)
-    .then(()=>{
-      console.log('added')
+    saveWidget(widget)
+    .then((widget)=>{
+      this.setState({
+        widgets:widget
+      })
     })
   }
 
@@ -45,7 +43,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log("did a rendery")
     return (
       <div>
         <Router>

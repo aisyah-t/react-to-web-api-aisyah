@@ -19,9 +19,9 @@ router.post('/', (req, res) => {
   console.log("I'm Alive!")
   db.saveWidget(widget)
     .then(() => {
-      return db.getWidgets()
+      db.getWidgets()
         .then(widgets => {
-          res.send(widgets)
+          res.json(widgets)
         })
         .catch(err => {
           res.status(500).send(err.message)

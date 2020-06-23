@@ -12,18 +12,15 @@ class NewWidget extends React.Component {
                 [e.target.name]: e.target.value
             }
         })
-
-        console.log(this.state.widget)
     }
 
     handleSubmit = (e) => {
         e.preventDefault()
-        console.log(this.state.widget)
 
-        // this.props.addWidget(this.state.widget)
-        // this.setState({
-        //     widget:{}
-        // })
+        this.props.addWidget(this.state.widget)
+        this.setState({
+            widget:{}
+        })
     }
 
 
