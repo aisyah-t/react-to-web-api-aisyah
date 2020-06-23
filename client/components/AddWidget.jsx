@@ -26,7 +26,7 @@ class AddWidget extends React.Component {
                 [evt.target.name]: evt.target.value
             }
         })
-        console.log(this.state.widget)
+        // console.log(this.state.widget)
     }
 
     render() {

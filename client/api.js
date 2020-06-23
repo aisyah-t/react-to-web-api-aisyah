@@ -17,3 +17,13 @@ export function addWidget(widget) {
       return response.body
     })
 }
+
+export function deleteWidget(widget) {
+  console.log(widget)
+  return request
+    .post(widgetUrl)
+    .send(widget)
+    .then(response => {
+      return response.body
+    })
+}

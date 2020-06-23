@@ -2,6 +2,7 @@ import React from 'react'
 import { getWidgets } from '../api'
 import Widgets from './Widgets'
 import AddWidget from './AddWidget'
+import DeleteWidget from './DeleteWidget'
 
 class App extends React.Component {
 
@@ -24,6 +25,7 @@ class App extends React.Component {
         <h1>Widgets FTW!</h1>
         <Widgets widgets = {this.state.widgets}/>
         <AddWidget />
+        <DeleteWidget widgets = {this.state.widgets}/>
       </div>
     )
 
