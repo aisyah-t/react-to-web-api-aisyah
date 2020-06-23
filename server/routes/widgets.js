@@ -14,4 +14,25 @@ router.get('/', (req, res) => {
 })
 
 
+router.post('/delete/', (req, res) => {
+  console.log("hit route for delete")
+  console.log(req.body)
+  db.deletewid(req.body)
+    .then(widgets => {
+      res.send(widgets)
+    })
+    .catch(err => {
+      res.status(500).send(err.message)
+    })
+})
+router.get('/update/', (req, res) => {
+ 
+  db.updatewid()
+    .then(widgets => {
+      res.send(widgets)
+    })
+    .catch(err => {
+      res.status(500).send(err.message)
+    })
+})
 module.exports = router
