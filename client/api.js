@@ -13,3 +13,10 @@ export function saveWidget (widget) {
   .send(widget)
   .then(response => response.body)
 }
+
+
+export function delWidget (widget) {
+  return request.del(widgetUrl)
+  .send(widget)
+  .then(response => response.body)
+}

@@ -29,5 +29,20 @@ router.post('/', (req, res) => {
     })
 })
 
+router.delete('/', (req, res) => {
+  const id = req.body.id
+  console.log(id)
+  db.deleteWidget(id)
+  .then(() => {
+    db.getWidgets()
+      .then(widgets => {
+        res.json(widgets)
+      })
+      .catch(err => {
+        res.status(500).send(err.message)
+      })
+  })
+})
+
 
 module.exports = router
