@@ -46,7 +46,7 @@ componentDidUpdate() {
         }
         
         <button onClick={this.handleClick}>Add a new widget</button>
-        {this.state.form && <Form createWidget={this.createWidget} refreshList={this.refreshList}/>}
+        {this.state.form && <Form refreshList={this.refreshList}/>}
       </div>
     )
   }

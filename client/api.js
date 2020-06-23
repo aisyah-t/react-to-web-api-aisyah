@@ -1,7 +1,6 @@
 import request from 'superagent'
 
 const widgetUrl = 'http://localhost:3000/api/v1/widgets/'
-const saveWidgetUrl = 'http://localhost:3000/api/v1/widgets/save'
 
 export function getWidgets () {
   return request

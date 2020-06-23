@@ -8,10 +8,12 @@ class Form extends React.Component {
         price: 0,
         mfg: "",
         inStock: 0,
+        rating: ""
     }
 
     handleSubmit = (event) => {
         event.preventDefault()
+        console.log(this.state)
         saveWidget(this.state)
             .then(() => this.props.refreshList())
     }
@@ -37,11 +39,11 @@ class Form extends React.Component {
                     <input type="number" name="inStock" onChange={this.handleChange} />
                     <label>Rating:</label>
                     <span className="radio-buttons">
-                        <input type="radio" id="rating-1" name="rating" value="1" /><label>1</label>
-                        <input type="radio" id="rating-2" name="rating" value="2" /><label>2</label>
-                        <input type="radio" id="rating-3" name="rating" value="3" /><label>3</label>
-                        <input type="radio" id="rating-4" name="rating" value="4" /><label>4</label>
-                        <input type="radio" id="rating-5" name="rating" value="5" /><label>5</label>
+                        <input type="radio" id="rating-1" name="rating" value="1" onChange={this.handleChange}/><label htmlFor="1">1</label>
+                        <input type="radio" id="rating-2" name="rating" value="2" onChange={this.handleChange}/><label htmlFor="2">2</label>
+                        <input type="radio" id="rating-3" name="rating" value="3" onChange={this.handleChange}/><label htmlFor="3">3</label>
+                        <input type="radio" id="rating-4" name="rating" value="4" onChange={this.handleChange}/><label htmlFor="4">4</label>
+                        <input type="radio" id="rating-5" name="rating" value="5" onChange={this.handleChange}/><label htmlFor="5">5</label>
                     </span>
                     <input type="submit" value="Save" />
                 </form>
