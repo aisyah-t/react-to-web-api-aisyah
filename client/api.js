@@ -7,3 +7,4 @@ export function getWidgets () {
     .get(widgetUrl)
     .then(response => response.body)
 }
+//write post function (google "post with superagent")

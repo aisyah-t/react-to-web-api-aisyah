@@ -12,6 +12,6 @@ router.get('/', (req, res) => {
       res.status(500).send(err.message)
     })
 })
-
+//add stuff to db then get stuff and res with that stuff
 
 module.exports = router

@@ -9,6 +9,12 @@ class App extends React.Component {
     widgets : []
   }
   
+// -Make things get added to DB-
+// set up post route
+// set up DB function that adds things
+// Do i make form submit post like normal?
+// route will send us to the same page
+
   componentDidMount(){
     console.log('did mount')
     console.log('render')
@@ -22,6 +28,10 @@ class App extends React.Component {
 
   getData = (dataFromForm) => {
     return dataFromForm
+    //call api post func that will post using superagent to route that'll add and send stuff. i'll write this api func in api.js
+    //then use .then (i forget what for...)
+    
+    // Using getWidgets() would cause more traffic/i wish i remembered the word edgars used
   }
 
   render() {
