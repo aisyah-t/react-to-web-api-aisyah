@@ -8,6 +8,7 @@ class Widget extends React.Component {
       <>
       <h2>{data.name}</h2>
       <p>Price: {data.price}</p>
+      <p>MFG: {data.mfg}</p>
       <p>Remaining Stock: {data.inStock}</p>
       </>
     )

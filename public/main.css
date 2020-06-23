@@ -1,3 +1,10 @@
+body {
+  background-color: bisque;
+  font-family: 'Cousine', monospace;
+  display: flex;
+  justify-content: center;
+}
+
 .widget-details .visible {
   display: block;
 }
