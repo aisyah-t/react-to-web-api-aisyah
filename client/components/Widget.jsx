@@ -11,6 +11,8 @@ const Widget = (props) => {
         <p>MFG: {props.widget.mfg}</p>
         <p>Rating: {props.widget.rating}</p>
         <button onClick={props.handleDeleteClick} id={props.widget.id}>Delete</button>
+        <button onClick={props.handleEditClick} id={props.widget.id}>Edit</button>
+
       </div>
     )
 }

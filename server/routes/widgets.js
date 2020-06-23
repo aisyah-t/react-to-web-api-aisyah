@@ -39,5 +39,9 @@ router.delete('/:id', (req, res) => {
   })
 })
 
+router.put('/:id', (req, res) => {
+  const id = req.params.id
+})
+
 
 module.exports = router

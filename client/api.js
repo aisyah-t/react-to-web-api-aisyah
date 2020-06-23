@@ -22,3 +22,10 @@ export function deleteWidget (id) {
 }
 
 
+export function editWidget (id) {
+  return request
+  .put(`${widgetUrl}/${id}`)
+  .then(response => response)
+}
+
+
