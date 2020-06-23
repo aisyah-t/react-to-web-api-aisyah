@@ -1,6 +1,7 @@
 import React from 'react'
 import { getWidgets } from '../api'
 import Widget from './Widget'
+import WidgetForm from './WidgetForm'
 
 class App extends React.Component {
   
@@ -19,6 +20,10 @@ class App extends React.Component {
       })
   }
 
+  getData = (dataFromForm) => {
+    return dataFromForm
+  }
+
   render() {
     return (
       <div>
@@ -29,6 +34,7 @@ class App extends React.Component {
             })
             }
         </ul>
+        <WidgetForm getData={this.getData}/>
       </div>
     )
   }
