@@ -5,11 +5,13 @@ import {HashRouter as Router, Link} from 'react-router-dom'
 import { getWidgets, saveWidget } from '../api.js'
 import Widgets from './Widgets'
 import NewWidget from './Form'
+import DelWidget from './DeleteWidget'
 
 class App extends React.Component {
   state = {
     widgets: [],
-    buttonClicked: false
+    buttonClicked: false,
+    deleteButtonClicked: false
   }
 
   componentDidMount() {
@@ -42,6 +44,18 @@ class App extends React.Component {
     }
   }
 
+  handleDeleteFormClick = () => {
+    if (this.state.deleteButtonClicked === false) {
+      this.setState({
+        deleteButtonClicked: true
+      })
+    } else if (this.state.deleteButtonClicked === true) {
+      this.setState({
+        deleteButtonClicked: false
+      })
+    }
+  }
+
   render() {
     return (
       <div>
@@ -49,7 +63,9 @@ class App extends React.Component {
           <h1>Wiaadgets FTW!</h1>
           <Widgets widgets={this.state.widgets} />
           <input type="submit" onClick={this.handleFormClick} value="Add widget"/>
+          <input type="submit" onClick={this.handleDeleteFormClick} value="Delete widget" />
           {this.state.buttonClicked && <NewWidget addWidget={this.addWidget}/>}
+          {this.state.deleteButtonClicked && <DelWidget delWidget={this.delWidget}/>}
         </Router>
       </div>
     )
