@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
     })
 })
 
-router.post('/save', (req, res) => {
+router.post('/', (req, res) => {
   const widget = req.body
 
   db.saveWidget(widget)

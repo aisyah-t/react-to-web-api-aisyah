@@ -11,7 +11,7 @@ export function getWidgets () {
 
 export function saveWidget (widget) {
   return request
-    .post(saveWidgetUrl)
+    .post(widgetUrl)
     .send(widget)
     .then(response => response.body)
 }

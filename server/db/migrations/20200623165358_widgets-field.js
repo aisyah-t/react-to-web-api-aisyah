@@ -7,5 +7,5 @@ exports.up = (knex, Promise) => {
 exports.down = (knex, Promise) => {
 return knex.schema.table('widgets', (table) => {
     table.dropColumn('rating')
-    })
+  })
 }
