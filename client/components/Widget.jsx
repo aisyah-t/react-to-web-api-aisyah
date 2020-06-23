@@ -6,13 +6,16 @@ const Widget = props => {
             <div className="text">
                 <h2>{props.data.name}</h2>
                     <p>
-                        <strong>Widget ID:</strong> {props.data.id}
+                        Widget ID:  {props.data.id}
                     </p>
                     <p>
-                        <strong>Size:</strong> {props.data.price}
+                        Size:   {props.data.price}
                     </p>
                     <p> 
-                        <strong>Stock:</strong> {props.data.inStock}
+                        MFG:    {props.data.mfg}
+                    </p>
+                    <p> 
+                        Stock:  {props.data.inStock}
                     </p>
             </div>
         </article>

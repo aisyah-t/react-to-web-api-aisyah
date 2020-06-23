@@ -1,5 +1,6 @@
 import React from 'react'
 import Widget from './Widget'
+import Form from './Form'
 import { getWidgets } from '../api'
 
 class App extends React.Component {
@@ -17,6 +18,12 @@ class App extends React.Component {
         })
       })
   }
+
+  addWidget = widget => {
+    const widgets = this.state.widgets
+    widgets.push(widget)
+    this.setState({widgets})
+  }
   
   render () {
     console.log('render')
@@ -28,20 +35,7 @@ class App extends React.Component {
           return <Widget key={widget.id} data={widget}/>
         })}
       </div>
-      {/* <div>
-        <form onSubmit={this.onSubmitHandle.bind(this)}>  
-          <input type="text" name="item" className="item"/>        
-          <button className="btn-add-item">Add</button>
-        </form>
-        <ul>{this.state.mockData.map(item => (          
-          <li key={item.id}>{item.title}
-            <button onClick={this.onDeleteHandle.bind(this, item.id)}>Delete</button> 
-            <button onClick={this.onEditHandle.bind(this, item.id, item.title)}>Edit</button>
-            <button onClick={this.onCompleteHandle}>Complete</button>
-          </li>
-          ))}
-        </ul>
-      </div> */}
+        <Form addWidget={this.addWidget}/>
     </>
     )
   }

@@ -7,3 +7,24 @@ export function getWidgets () {
     .get(widgetUrl)
     .then(response => response.body)
 }
+
+export function saveWidget (widget) {
+  return request
+    .post(widgetUrl)
+    .send(widget)
+    .then(response => response.body)
+}
+
+export function updateWidget(widget) {
+  return request
+    .put(widgetUrl)
+    .update(widget)
+    .then(response => response.body)
+}
+
+export function deleteWidget(widget) {
+  return request
+    .get(widgetUrl)
+    .del(widget)
+    .then(response => response.body)
+}

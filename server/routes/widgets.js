@@ -13,5 +13,34 @@ router.get('/', (req, res) => {
     })
 })
 
+router.post('/', (req,res) => {
+  const widget = req.body
+  db.saveWidget(widget)
+    .then(() => {
+      return db.getWidgets()
+    })
+    .then(widget => {
+      res.send(widget)
+    })
+})
+
+router.put('/', (req,res) => {
+  const widget = req.body
+  db.updateWidget(widget)
+    .then(() => {
+      return db.getWidgets()
+    })
+    .then(widget => {
+      res.send(widget)
+    })
+})
+
+router.delete('/', (req, res) => {
+  const widget = req.body
+  db.deleteWidget(widget)
+    .then(() => {
+      res.send({})
+    })
+})
 
 module.exports = router
