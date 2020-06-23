@@ -2,7 +2,6 @@ import React from 'react'
 
 class Widget extends React.Component {
     render() {
-        console.log(this.props)
         return (
             <>
                 <li>

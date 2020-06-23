@@ -13,5 +13,13 @@ router.get('/', (req, res) => {
     })
 })
 
+router.post('/', (req, res) => {
+  console.log(req.body)
+  db.saveWidget(widget)
+  .then()
+})
+
+
+
 
 module.exports = router
