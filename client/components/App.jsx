@@ -18,7 +18,14 @@ class App extends React.Component {
     })
 }
 
-  
+  addWidget = widget => {
+    const widgets = this.state.widgets
+
+    widgets.push(widget)
+
+    this.setState({widgets})
+  }
+
 
   render() {
     console.log('render')
@@ -31,7 +38,7 @@ class App extends React.Component {
           })}
         </ul>
         <h2>Add another widget!</h2>
-        <AddWidget />
+        <AddWidget addWidget={this.addWidget} />
       </div>
     )
   }

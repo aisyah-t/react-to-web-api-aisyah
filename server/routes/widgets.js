@@ -13,5 +13,13 @@ router.get('/', (req, res) => {
     })
 })
 
+router.post('/', (req, res) => {
+  const widget = req.body
+  db.makeWidget(widget)
+  .then(newWidget => {
+    res.send(newWidget)
+  })
+})
+
 
 module.exports = router
