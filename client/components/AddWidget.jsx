@@ -28,7 +28,7 @@ class AddWidget extends React.Component {
 
   render() {
     return (
-      <>
+      <div className="form">
         <form onSubmit={this.handleSubmit} >
           <label>Name:
         <input type="text" name="name" onChange={this.handleChange} />
@@ -44,7 +44,7 @@ class AddWidget extends React.Component {
           </label><br></br>
           <input type="submit" value="Add!" />
         </form>
-      </>
+      </div>
     )
   }
 }
