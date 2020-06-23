@@ -1,9 +1,9 @@
 import React from "react"
 
 const Widget = props => {
-    console.log("hmm", props.widgetObject)
+    console.log("Is this working? Object passed through props:", props.widgetObject)
     return(
-        <li>yo</li>
+    <li>{props.widgetObject.name} {props.widgetObject.price} {props.widgetObject.mfg}</li>
     )
 }
 

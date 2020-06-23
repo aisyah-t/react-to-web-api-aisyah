@@ -33,12 +33,10 @@ class App extends React.Component {
       <div>
         <h1>Widgets FTW!</h1>
         <ul>
-          <Widget
-          widgetObject={
-            this.state.widgets.map(eachObject => {
-              return eachObject
+          {this.state.widgets.map(eachObject => {
+            return <Widget widgetObject={eachObject} key={eachObject.id}/>
             })
-            } />
+            }
         </ul>
       </div>
     )
