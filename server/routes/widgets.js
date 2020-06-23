@@ -13,9 +13,11 @@ router.get('/', (req, res) => {
     })
 })
 
-router.post('/add', (req, res) => {
+router.post('/', (req, res) => {
+  const widget = req.body
+  console.log(widget)
   console.log("I'm Alive!")
-  db.saveWidget()
+  db.saveWidget(widget)
     .then(() => {
       return db.getWidgets()
         .then(widgets => {

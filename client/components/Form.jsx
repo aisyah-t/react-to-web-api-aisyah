@@ -20,9 +20,10 @@ class NewWidget extends React.Component {
         e.preventDefault()
         console.log(this.state.widget)
 
-        this.props.addWidget(
-           this.state.widget
-        )
+        // this.props.addWidget(this.state.widget)
+        // this.setState({
+        //     widget:{}
+        // })
     }
 
 

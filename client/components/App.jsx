@@ -25,6 +25,7 @@ class App extends React.Component {
   }
 
   addWidget = (widget) => {
+    console.log(widget)
     db.saveWidget(widget)
     .then(()=>{
       console.log('added')
