@@ -14,7 +14,9 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  console.log(req.body)
+  console.log('-----server side request body ' , req.body)
+  // console.log(req.body)
+
   db.saveWidget(req.body)
     .then(widgets => {
       res.send(widgets)

@@ -5,6 +5,11 @@ body {
   justify-content: center;
 }
 
+.formDiv {
+  display: flex;
+  flex-direction: column;
+} 
+
 .widget-details .visible {
   display: block;
 }

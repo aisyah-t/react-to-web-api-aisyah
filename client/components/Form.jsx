@@ -8,6 +8,7 @@ class Form extends React.Component {
     price: '',
     mfg: '',
     inStock: '',
+    rating: '',
   }
 
   
@@ -32,7 +33,7 @@ class Form extends React.Component {
     return (
       <div>
       <h3>Add a new widget!</h3>
-      <form onSubmit={this.makeWidget} >
+      <form className = 'formDiv'onSubmit={this.makeWidget} >
         <label >Name</label>
         <input type="text" name="name"  onChange={this.handleChange}/>
 
@@ -44,6 +45,9 @@ class Form extends React.Component {
 
         <label >Remaining Stock</label>
         <input type="text" name="inStock" onChange={this.handleChange} />
+
+        <label >Rating</label>
+        <input type="text" name="rating" onChange={this.handleChange} />
 
         <input type="submit" name="submit"/>
 
