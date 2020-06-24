@@ -80,10 +80,6 @@ class App extends React.Component {
         <Router>
           <h1>Widgets FTW!</h1>
 
-          <input id="new-widget-link" type="submit" onClick={this.handleFormClick} value="New widget"/>
-          <br/>
-
-          {this.state.buttonClicked && <NewWidget addWidget={this.addWidget}/>}
 
           <div>
 
@@ -91,10 +87,13 @@ class App extends React.Component {
 
           </div><br/>
 
+          
+          <input id="new-widget-link" type="submit" onClick={this.handleFormClick} value="New widget"/>
+          <br/>
+          {this.state.buttonClicked && <NewWidget addWidget={this.addWidget}/>}
 
           <input type="submit" onClick={this.handleRemoveClick} value="Delete widget"/>
           <br/>
-
           {this.state.removeButton && <DeleteWidget widgets={this.state.widgets} removeWidget={this.removeWidget}/>}
 
 

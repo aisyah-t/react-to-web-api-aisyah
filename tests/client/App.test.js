@@ -39,7 +39,6 @@ test('Renders add form when clicked', () => {
   const wrapper = mount(<App />)
   // console.log(wrapper.debug())
   expect(wrapper.find('.add-widget').exists()).toBeFalsy()
-  //  wrapper.setState({buttonClicked: true})
   wrapper.find('#new-widget-link').simulate('click')
   // console.log(wrapper.debug())
   expect(wrapper.find('.add-widget').exists()).toBeTruthy()
