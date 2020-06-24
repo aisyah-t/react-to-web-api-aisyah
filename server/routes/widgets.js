@@ -24,16 +24,17 @@ router.post('/', (req,res) => {
     })
 })
 
-// router.put('/', (req,res) => {
-//   const widget = req.body
-//   db.updateWidget(widget)
-//     .then(() => {
-//       return db.getWidgets()
-//     })
-//     .then(widget => {
-//       res.send(widget)
-//     })
-// })
+//need to fix this to make update work
+router.put('/', (req,res) => {
+  const widget = req.body
+  db.updateWidget(widget)
+    .then(() => {
+      return db.getWidgets()
+    })
+    .then(widget => {
+      res.send(widget)
+    })
+})
 
 //id being passed in from delete
 router.delete('/', (req, res) => {

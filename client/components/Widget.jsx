@@ -1,5 +1,6 @@
 import React from 'react'
 import Delete from './Delete'
+import Update from './Update'
 
 //onCLick and Handle functions require state
 //state can only be used in a class component
@@ -26,6 +27,7 @@ function Widget(props) {
                         <p> 
                             Rating:  {props.data.rating}
                         </p>
+                        <Update id={props.data.id} updateWidget={props.updateWidget}/>
                         <Delete id={props.data.id} removeWidget={props.removeWidget}/>
                 </div>
             </article>
