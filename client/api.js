@@ -19,9 +19,9 @@ export function saveWidget(widget) {
     .then(response => response.body)
 }
 
-export function updateWidget(widget) {
+export function updateWidget(widget, id) {
   return request
-    .put(widgetUrl)
+    .put(widgetUrl + id)
     .send(widget)
     .then(response => response.body)
 }
@@ -29,7 +29,7 @@ export function updateWidget(widget) {
 //id passed from delete
 export function deleteWidget(id) {
   return request
-    .del(widgetUrl)
+    .del(widgetUrl + id)
     .send({id})
     .then(response => response.body)
 }

@@ -1,5 +1,4 @@
 import React from 'react'
-import { render } from 'enzyme'
 
 function Delete (props) {
     //id is being passed from Widget.jsx which gets it from App.jsx

@@ -25,26 +25,28 @@ router.post('/', (req,res) => {
 })
 
 //need to fix this to make update work
-router.put('/', (req,res) => {
+router.put('/:id', (req,res) => {
   const widget = req.body
-  db.updateWidget(widget)
+  const id = req.params.id
+  console.log(id, widget)
+  db.updateWidget(id, widget)
     .then(() => {
-      return db.getWidgets()
+      return db.getWidget(id)
     })
     .then(widget => {
-      res.send(widget)
+      res.json(widget)
     })
 })
 
 //id being passed in from delete
-router.delete('/', (req, res) => {
-  const widget = req.body.id
-  db.deleteWidget(widget)
+router.delete('/:id', (req, res) => {
+  const id = req.params.id
+  db.deleteWidget(id)
     .then(() => {
-      return db.getWidgets()
+      return db.getWidget(id)
     })
     .then(widget => {
-      res.send(widget)
+      res.json(widget)
     })
 })
 
