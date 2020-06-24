@@ -12,7 +12,7 @@ class Update extends React.Component {
         const widget = this.state
         updateWidget(widget, this.props.id)
         .then(() => {
-        console.log('it worked!')
+        this.props.updateWidget()
         })
     }
 
@@ -22,14 +22,18 @@ class Update extends React.Component {
         })
     }
 
+    //alternative to this method would be to set input value with default value so that the form is already prefilled and no blanks are being pushed
+    
     //triggered wheneever props changed on component
-    getDerivedStateFromProps(nextProps, prevState) {
-        if (prevState !== nextProps.widget) {
-            return {...nextProps.widget} //... duplicator fuction
-        } else {
-            return null
-        }
-    }
+    // static getDerivedStateFromProps(nextProps, prevState) {
+    //     console.log(nextProps, prevState)
+    //     if (prevState !== nextProps.widget) {
+    //         console.log('good')
+    //         return {...nextProps.widget} //... duplicator fuction
+    //     } else {
+    //         return null
+    //     }
+    // }
 
     render() {
         return (
@@ -37,7 +41,7 @@ class Update extends React.Component {
             <h3>Edit this Widget</h3>
                 <form onSubmit={this.handleSubmit}>
                     <label>Name:</label>
-                    <input type="text" name="name" value={this.state.name} onChange={this.handleChange}/>
+                    <input type="text" name="name" value={this.state.name} defaultValue={this.props.widget.name} onChange={this.handleChange}/>
 
                     <label>Price:</label>
                     <input type="text" name="price" value={this.state.price} onChange={this.handleChange}/>

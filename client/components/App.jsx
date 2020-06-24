@@ -25,6 +25,15 @@ class App extends React.Component {
     this.setState({widgets})
   }
 
+  updateWidget = () => {
+    getWidgets()
+      .then(widget => {
+        this.setState({
+          widgets: widget,
+        })
+      })
+  }
+
   removeWidget = widget => {
     deleteWidget(widget)
     .then(widgets => 
@@ -37,7 +46,7 @@ class App extends React.Component {
     <div>
       <h1>Widgets FTW!</h1>
       {this.state.widgets.map(widget => {
-        return <Widget key={widget.id} data={widget} removeWidget={this.removeWidget}/>
+        return <Widget key={widget.id} data={widget} removeWidget={this.removeWidget} updateWidget={this.updateWidget}/>
       })}
       <Form addWidget={this.addWidget}/>
     </div>

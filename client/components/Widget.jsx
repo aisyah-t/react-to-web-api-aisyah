@@ -1,7 +1,6 @@
 import React from 'react'
 import Delete from './Delete'
 import Update from './Update'
-import { ProgressPlugin } from 'webpack'
 
 //onCLick and Handle functions require state
 //state can only be used in a class component
