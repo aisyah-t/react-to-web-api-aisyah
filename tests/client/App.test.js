@@ -1,13 +1,27 @@
 import React from 'react'
 
 import App from '../../client/components/App'
-import { shallow } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 
 App.prototype.componentDidMount = () => {}
 
-test('Shows heading', () => {
+test('Shows Header', () => {
   const wrapper = shallow(<App />)
   expect(wrapper.find('h1').text()).toBe('Widgets FTW!')
+})
+
+test('Tests NewWidget does not show when unclicked button', () => {
+  const wrapper = shallow(<App />)
+  wrapper.setState({buttonClicked: false})
+  console.log(wrapper.debug())
+  expect(wrapper.find('NewWidget').exists()).toBeFalsy()
+})
+
+test('Tests NewWidget does show when button clicked', () => {
+  const wrapper = shallow(<App />)
+  wrapper.setState({buttonClicked: true})
+  console.log(wrapper.debug())
+  expect(wrapper.find('NewWidget').exists()).toBeTruthy()
 })
 
 // Some tests have already been written for you.
@@ -19,6 +33,7 @@ test('Renders widget list', () => {
   expect(wrapper.find('.widget-list').exists()).toBeTruthy()
 })
 */
+
 
 /*
 test('Renders add form when clicked', () => {

@@ -78,7 +78,7 @@ class App extends React.Component {
     return (
       <div>
         <Router>
-          <h1>Wiaadgets FTW!</h1>
+          <h1>Widgets FTW!</h1>
 
           <input type="submit" onClick={this.handleFormClick} value="New widget"/>
           <br/>
