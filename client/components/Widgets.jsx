@@ -26,7 +26,7 @@ class Widgets extends React.Component {
     render() {
         return (
             <div>
-                <section className="container">
+                <section className="widget-list">
                     {this.props.widgets.map(widget => {
                         return (<article className="item" key={widget.id} id={widget.id}>
                             <p className="bold_text" >{widget.name}</p>

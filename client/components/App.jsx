@@ -80,14 +80,14 @@ class App extends React.Component {
         <Router>
           <h1>Widgets FTW!</h1>
 
-          <input type="submit" onClick={this.handleFormClick} value="New widget"/>
+          <input id="new-widget-link" type="submit" onClick={this.handleFormClick} value="New widget"/>
           <br/>
 
           {this.state.buttonClicked && <NewWidget addWidget={this.addWidget}/>}
 
-          <div className = "container">
+          <div>
 
-          <Widgets updateWidget={this.updateWidget} widgets={this.state.widgets} />
+          <Widgets  updateWidget={this.updateWidget} widgets={this.state.widgets} />
 
           </div><br/>
 

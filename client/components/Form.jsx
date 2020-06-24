@@ -26,7 +26,7 @@ class NewWidget extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form className="add-widget" onSubmit={this.handleSubmit}>
                 <label >Name: </label>
                 <input type="text" name="name" onChange={this.handleChange} />
                 <br />
@@ -47,7 +47,7 @@ class NewWidget extends React.Component {
                 <input type="text" name="rating" onChange={this.handleChange} />
                 <br />
 
-                <button type='submit'>NEW WIDGET!</button>
+                <button  type='submit'>NEW WIDGET!</button>
             </form>
         )
     }

@@ -13,36 +13,37 @@ test('Shows Header', () => {
 test('Tests NewWidget does not show when unclicked button', () => {
   const wrapper = shallow(<App />)
   wrapper.setState({buttonClicked: false})
-  console.log(wrapper.debug())
+  // console.log(wrapper.debug())
   expect(wrapper.find('NewWidget').exists()).toBeFalsy()
 })
 
 test('Tests NewWidget does show when button clicked', () => {
   const wrapper = shallow(<App />)
   wrapper.setState({buttonClicked: true})
-  console.log(wrapper.debug())
+  // console.log(wrapper.debug())
   expect(wrapper.find('NewWidget').exists()).toBeTruthy()
 })
 
 // Some tests have already been written for you.
 // See if you can get your components passing them...
 
-/*
+
 test('Renders widget list', () => {
   const wrapper = mount(<App />)
+  // console.log(wrapper.debug())
   expect(wrapper.find('.widget-list').exists()).toBeTruthy()
 })
-*/
 
 
-/*
 test('Renders add form when clicked', () => {
   const wrapper = mount(<App />)
+  // console.log(wrapper.debug())
   expect(wrapper.find('.add-widget').exists()).toBeFalsy()
-  wrapper.find('#show-widget-link').simulate('click')
+  //  wrapper.setState({buttonClicked: true})
+  wrapper.find('#new-widget-link').simulate('click')
+  // console.log(wrapper.debug())
   expect(wrapper.find('.add-widget').exists()).toBeTruthy()
 })
-*/
 
 
 /*
