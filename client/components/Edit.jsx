@@ -18,7 +18,14 @@ class EditWidget extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault()
 
-        this.props.updateWidget(this.state.widget)
+        const widget = {
+            ...this.props.widget,
+            ...this.state.widget
+            }
+
+            console.log(widget)
+
+        this.props.updateWidget(widget)
         this.setState({
             widget:{}
         })
@@ -35,23 +42,23 @@ class EditWidget extends React.Component {
               <br/>
 
                 <label >Name: </label>
-                <input type="text" name="name" onChange={this.handleChange} />
+                <input type="text" name="name" defaultValue={this.props.widget.name} onChange={this.handleChange} />
                 <br />
 
                 <label >Stock level: </label>
-                <input type="text" name="inStock" onChange={this.handleChange} />
+                <input type="text" name="inStock"defaultValue={this.props.widget.inStock} onChange={this.handleChange} />
                 <br />
 
                 <label >MFG: </label>
-                <input type="text" name="mfg" onChange={this.handleChange} />
+                <input type="text" name="mfg" defaultValue={this.props.widget.mfg} onChange={this.handleChange} />
                 <br />
 
                 <label >Price: </label>
-                <input type="text" name="price" onChange={this.handleChange} />
+                <input type="text" name="price" defaultValue={this.props.widget.price} onChange={this.handleChange} />
                 <br />
 
                 <label >Rating: </label>
-                <input type="text" name="rating" onChange={this.handleChange} />
+                <input type="text" name="rating" defaultValue={this.props.widget.rating} onChange={this.handleChange} />
                 <br />
 
                 <button type='submit'>Change WIDGET!</button>
