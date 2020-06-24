@@ -9,12 +9,10 @@ export function getWidgets () {
 }
 
 export function addWidget(widget){
-
-  console.log(widget)
   
  return request
  .post(widgetUrl)
  .send(widget)
- .then( response => response.body) // if we wanted to show individual widget use this
+ .then( response => req.body) // if we wanted to show individual widget use this
    
 }

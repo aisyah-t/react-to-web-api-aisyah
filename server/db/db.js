@@ -7,7 +7,7 @@ module.exports = {
   saveWidget
 }
 
-function getWidgets(db = connection) {
+function getWidgets(db = connection) {run
   return db('widgets').select()
 }
 

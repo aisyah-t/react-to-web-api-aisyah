@@ -9,7 +9,7 @@ class Form extends React.Component {
     price: '',
     mfg: '',
     inStock: '',
-    raiting:'',
+    rating:'',
   }
 
   handleChange = event => {
@@ -36,27 +36,27 @@ class Form extends React.Component {
       <form onSubmit={this.handleSubmit}>
         <label>
           Name:
-          <input type="text" name="name" onChange={this.handleChange} />
+          <input type="text" name="name" onChange={this.handleChange}/>
         </label>
 
         <label>
           Price:
-          <input type="text" name="price" onChange={this.handleChange} />
+          <input type="text" name="price" onChange={this.handleChange}/>
         </label>
 
         <label>
           Mfg:
-          <input type="text" name="mfg" onChange={this.handleChange} />
+          <input type="text" name="mfg" onChange={this.handleChange}/>
         </label>
 
         <lable>
           InStock:
-          <input type="text" name="inStock" onChange={this.handleChange} />
+          <input type="text" name="inStock" onChange={this.handleChange}/>
         </lable>
         
         <label>
           Rating:
-          <input type="text" nam="rating" onChange={this.handleChange}/>
+          <input type="text" name="rating" onChange={this.handleChange}/>
         </label>
 
         <input type="submit" value="Save" />
