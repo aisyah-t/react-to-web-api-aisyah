@@ -7,8 +7,14 @@
 }
 
 .container {
-  display: flex
+  display: flex;
 }
+
+.item {
+  display:inline;
+  margin:auto 5% auto 5%;
+}
+
 
 .bold_text {
   font-weight: bold;

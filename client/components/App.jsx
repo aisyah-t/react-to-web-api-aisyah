@@ -2,11 +2,10 @@ import React from 'react'
 import {HashRouter as Router, Route, Link} from 'react-router-dom'
 
 
-import { getWidgets, saveWidget, delWidget } from '../api.js'
+import { getWidgets, saveWidget, delWidget, editWidget } from '../api.js'
 import Widgets from './Widgets'
 import NewWidget from './Form'
 import DeleteWidget from './Delete'
-import EditWidget from './Edit'
 
 class App extends React.Component {
   state = {
@@ -42,14 +41,14 @@ class App extends React.Component {
     })
   }
 
-  // updateWidget = (widget) => {
-  //   editWidget(widget)
-  //   .then(widget => {
-  //     this.setState({
-  //       widgets:widget
-  //     })
-  //   })
-  // }
+  updateWidget = (widget) => {
+    editWidget(widget)
+    .then(widget => {
+      this.setState({
+        widgets:widget
+      })
+    })
+  }
 
   handleFormClick = () => {
     if (this.state.buttonClicked === false) {
@@ -80,17 +79,18 @@ class App extends React.Component {
       <div>
         <Router>
           <h1>Wiaadgets FTW!</h1>
-          <div className = "container">
 
-          <Widgets widgets={this.state.widgets} />
-
-          <Route exact path="/edit/:id" widgets={this.state.widgets} component={EditWidget}/>
-          </div><br/>
-
-          <input type="submit" onClick={this.handleFormClick} value="Add widget"/>
+          <input type="submit" onClick={this.handleFormClick} value="New widget"/>
           <br/>
 
           {this.state.buttonClicked && <NewWidget addWidget={this.addWidget}/>}
+
+          <div className = "container">
+
+          <Widgets updateWidget={this.updateWidget} widgets={this.state.widgets} />
+
+          </div><br/>
+
 
           <input type="submit" onClick={this.handleRemoveClick} value="Delete widget"/>
           <br/>

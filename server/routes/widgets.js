@@ -15,8 +15,8 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   const widget = req.body
-  console.log(widget)
-  console.log("I'm Alive!")
+  // console.log(widget)
+  // console.log("I'm Alive!")
   db.saveWidget(widget)
     .then(() => {
       db.getWidgets()
@@ -31,8 +31,25 @@ router.post('/', (req, res) => {
 
 router.delete('/', (req, res) => {
   const id = req.body.id
-  console.log(id)
+  // console.log(id)
   db.deleteWidget(id)
+  .then(() => {
+    db.getWidgets()
+      .then(widgets => {
+        res.json(widgets)
+      })
+      .catch(err => {
+        res.status(500).send(err.message)
+      })
+  })
+})
+
+router.put('/', (req,res)=>{
+  const id= req.body.id
+  const widget= req.body
+  console.log(id)
+  console.log(widget)
+  db.updateWidget(id, widget)
   .then(() => {
     db.getWidgets()
       .then(widgets => {

@@ -9,6 +9,7 @@ class EditWidget extends React.Component {
         this.setState({
             widget: {
                 ...this.state.widget,
+                id:  this.props.widget.id,
                 [e.target.name]: e.target.value
             }
         })
@@ -17,7 +18,7 @@ class EditWidget extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault()
 
-        this.props.addWidget(this.state.widget)
+        this.props.updateWidget(this.state.widget)
         this.setState({
             widget:{}
         })
@@ -28,9 +29,9 @@ class EditWidget extends React.Component {
         return (
             <form onSubmit={this.handleSubmit}>
 
-              <h3>Edit the Widget :?</h3>
+              <h3>Edit Widget:</h3>
 
-              <input type="hidden" name="id"  />
+              <input type="hidden" name="id" />
               <br/>
 
                 <label >Name: </label>

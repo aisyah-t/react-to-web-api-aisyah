@@ -20,3 +20,10 @@ export function delWidget (widget) {
   .send(widget)
   .then(response => response.body)
 }
+
+
+export function editWidget (widget) {
+  return request.put(widgetUrl)
+  .send(widget)
+  .then(response => response.body)
+}
