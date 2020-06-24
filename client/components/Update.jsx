@@ -27,11 +27,11 @@ class Update extends React.Component {
     editClick = () => {
         if (this.state.clicked == false) {
             this.setState({
-                [this.state.clicked]: true
+                clicked: true
             })
         } else if (this.state.clicked == true) {
             this.setState({
-                [this.state.clicked]: false
+                clicked: false
             })
         }
     }
@@ -49,10 +49,10 @@ class Update extends React.Component {
     // }
 
     render() {
-        if (this.state.clicked == false) {
-            return <button onClick={this.editClick}>Edit</button>
-        } else if (this.state.clicked == true) {
-            return (
+        return (
+                <>
+                <button onClick={this.editClick}>Edit</button>
+                {this.state.clicked &&
                 <div class="update">
                 <h3>Edit this Widget</h3>
                     <form onSubmit={this.handleSubmit}>
@@ -74,8 +74,9 @@ class Update extends React.Component {
                         <button type="submit">Submit</button>
                     </form>
                 </div>
+                }
+                </>
             )
-        }
     }
 }
 
