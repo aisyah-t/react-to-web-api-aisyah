@@ -50,6 +50,8 @@ test('Shows widget details', () => {
   const widgets = [{name: 'red', id: 1}, {name: 'blue', id: 2}]
   const wrapper = mount(<App />)
   wrapper.setState({widgets})
+  //Console log \/
+  console.log(wrapper.debug())
   expect(wrapper.find('.widget-details').exists()).toBeFalsy()
 
   wrapper.instance().showDetails(widgets[0])

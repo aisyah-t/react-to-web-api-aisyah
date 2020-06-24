@@ -1,60 +1,62 @@
-const express = require('express')
+const express = require("express")
 const router = express.Router()
 
-const db = require('../db/db')
+const db = require("../db/db")
 
-router.get('/', (req, res) => {
+router.get("/", (req, res) => {
   db.getWidgets()
-    .then(widgets => {
+    .then((widgets) => {
       res.send(widgets)
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send(err.message)
     })
 })
 
-router.post('/', (req, res) => {
+router.post("/", (req, res) => {
   const widget = req.body
   db.saveWidget(widget)
     .then(() => {
+
       db.getWidgets()
-        .then(widgets => {
+        .then((widgets) => {
           res.json(widgets)
         })
-        .catch(err => {
+        .catch((err) => {
+          console.log(err)
           res.status(500).send(err.message)
         })
     })
+    .catch((err) => {
+      console.log(err)
+    })
 })
 
-router.delete('/', (req, res) => {
+router.delete("/", (req, res) => {
   const id = req.body.id
-  db.deleteWidget(id)
-  .then(() => {
+  db.deleteWidget(id).then(() => {
     db.getWidgets()
-      .then(widgets => {
+      .then((widgets) => {
         res.json(widgets)
       })
-      .catch(err => {
+      .catch((err) => {
         res.status(500).send(err.message)
       })
   })
 })
 
-router.put('/', (req,res)=>{
-  const id= req.body.id
-  const widget= req.body
-  db.updateWidget(id, widget)
-  .then(() => {
+router.put("/", (req, res) => {
+  const id = req.body.id
+  const widget = req.body
+  db.updateWidget(id, widget).then(() => {
     db.getWidgets()
-      .then(widgets => {
+      .then((widgets) => {
         res.json(widgets)
       })
-      .catch(err => {
+      .catch((err) => {
         res.status(500).send(err.message)
       })
   })
 })
-
 
 module.exports = router
