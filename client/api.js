@@ -19,16 +19,17 @@ export function saveWidget(widget) {
     .then(response => response.body)
 }
 
-export function updateWidget(widget) {
-  return request
-    .put(widgetUrl)
-    .update(widget)
-    .then(response => response.body)
-}
+// export function updateWidget(widget) {
+//   return request
+//     .put(widgetUrl)
+//     .update(widget)
+//     .then(response => response.body)
+// }
 
-export function deleteWidget(widget) {
+//id passed from delete
+export function deleteWidget(id) {
   return request
-    .get(widgetUrl)
-    .del(widget)
+    .del(widgetUrl)
+    .send({id})
     .then(response => response.body)
 }

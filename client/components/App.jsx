@@ -1,7 +1,7 @@
 import React from 'react'
 import Widget from './Widget'
 import Form from './Form'
-import { getWidgets } from '../api'
+import { getWidgets, deleteWidget } from '../api'
 
 class App extends React.Component {
   //state MUST be declared before render()!!!
@@ -24,6 +24,12 @@ class App extends React.Component {
     widgets.push(widget)
     this.setState({widgets})
   }
+
+  removeWidget = widget => {
+    deleteWidget(widget)
+    .then(widgets => 
+    this.setState({widgets}))
+}
   
   render () {
     console.log('render')
@@ -31,7 +37,7 @@ class App extends React.Component {
     <div>
       <h1>Widgets FTW!</h1>
       {this.state.widgets.map(widget => {
-        return <Widget key={widget.id} data={widget}/>
+        return <Widget key={widget.id} data={widget} removeWidget={this.removeWidget}/>
       })}
       <Form addWidget={this.addWidget}/>
     </div>

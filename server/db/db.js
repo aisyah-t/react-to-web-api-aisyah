@@ -16,7 +16,14 @@ function saveWidget(widget, db = connection) {
   })
 }
 
+function deleteWidget(id, db = connection) {
+  return db('widgets')
+  .where('id', id)
+  .del()
+}
+
 module.exports = {
   getWidgets,
   saveWidget,
+  deleteWidget,
 }
