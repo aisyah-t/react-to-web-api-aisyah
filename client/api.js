@@ -21,7 +21,7 @@ export function saveWidget(widget) {
 
 export function updateWidget(widget) {
   return request
-    .post(widgetUrl)
+    .put(widgetUrl)
     .send(widget)
     .then(response => response.body)
 }
