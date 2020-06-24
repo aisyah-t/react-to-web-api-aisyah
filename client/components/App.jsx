@@ -3,6 +3,8 @@ import Widget from './Widget'
 import Form from './Form'
 import { getWidgets, deleteWidget } from '../api'
 
+//THIS IS NOW MAPPING BLANK!
+
 class App extends React.Component {
   //state MUST be declared before render()!!!
   state = {
@@ -38,7 +40,7 @@ class App extends React.Component {
     deleteWidget(widget)
     .then(widgets => 
     this.setState({widgets}))
-}
+  }
   
   render () {
     console.log('render')
