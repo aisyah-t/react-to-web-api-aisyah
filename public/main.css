@@ -28,6 +28,11 @@ article {
   width: 270px;
 }
 
+.update {
+  background-color: rgb(235, 210, 165);
+  width: 270px;
+}
+
 form {
   margin: 10px;
 }

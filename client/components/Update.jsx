@@ -11,7 +11,7 @@ function Update (props) {
     //need to hide edit until clicked
 
     return (
-        <>
+        <div class="update">
         <h3>Create your own Widget!</h3>
             <form onSubmit={handleSubmit}>
                 <label>Name:</label>
@@ -31,7 +31,7 @@ function Update (props) {
 
                 <button type="submit">Edit</button>
             </form>
-        </>
+        </div>
     )
     
 }
