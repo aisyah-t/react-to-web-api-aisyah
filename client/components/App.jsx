@@ -2,6 +2,8 @@ import React from 'react'
 import { getWidgets } from "../api"
 import Widget from "./Widget"
 import Add from "./Add"
+import request from 'superagent'
+
 class App extends React.Component {
   state = {
     Widgets: [],
@@ -13,7 +15,8 @@ class App extends React.Component {
     getWidgets().then(data => {
       console.log("got Widgets")
       this.setState({
-        Widgets: data
+        Widgets: data,
+        quote: "none"
       })
     })
 
@@ -22,6 +25,18 @@ class App extends React.Component {
     this.setState({
       editmode: !this.state.editmode
     })
+  }
+  externalApi = () => {
+    request
+    .get('https://api.kanye.rest')
+    .then(res => {
+        this.setState({
+          quote: res.body.quote
+        })
+      })
+  }
+  componentDidMount() {
+    this.externalApi()
   }
   render() {
     console.log(this.state.Widgets)
@@ -40,6 +55,11 @@ class App extends React.Component {
            <button onClick={this.edit}>Edit page</button>
            {
           this.state.editmode && <Add/> 
+        }
+<br></br>
+
+        {
+          this.state.quote
         }
         </ul>
       </div>
