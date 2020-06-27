@@ -37,7 +37,7 @@ class AddWidget extends React.Component {
 
                 <label htmlFor="price">Price:</label>
                 <input type="text" name="price" onChange={this.handleChange} />
-
+                
                 <label htmlFor="mfg">Manufacturing Group:</label>
                 <input type="text" name="mfg" onChange={this.handleChange} />
 

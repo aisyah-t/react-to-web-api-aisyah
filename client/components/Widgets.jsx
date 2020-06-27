@@ -6,21 +6,21 @@ class Widgets extends React.Component {
     render() {
         // console.log(this.props)
         return (
-            <div>
+            <React.Fragment>
                 {this.props.widgets.map(widget => {
                     return (
-                        <main>
-                            <h4>{widget.name}</h4>
+                        <main key={widget.id}>
+                            <h3>{widget.name}</h3>
                             <ul>
                                 <li>Price: {widget.price}</li>
                                 <li>Manufacturing Group: {widget.mfg}</li>
-                                <li>In stock:{widget.inStock}</li>
-                                <li>Rating:{widget.rating}</li>
+                                <li>In stock:   {widget.inStock}</li>
+                                <li>Rating: {widget.rating}</li>
                             </ul>
                         </main>
                     )
                 })}
-            </div>
+            </React.Fragment>
         )
     }
 }

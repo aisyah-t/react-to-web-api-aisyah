@@ -7,17 +7,17 @@ class DeleteWidget extends React.Component {
     //When user clicks on a widget name run deleteWidget function
 
     render() {
-        console.log(this.props)
+        //console.log(this.props)
         return (
             <React.Fragment>
                 <h1>Delete a widget</h1>
-                {this.props.widgets.map( (widget) => {
+                {this.props.widgets.map( (widget, i) => {
                     return (
-                        <div>
+                        <div key={i}>
                             <ul>
-                                <li key={widget.id}>
-                                    <a href='' id={widget.id}>{widget.name}
-                                    </a></li>
+                                <li>
+                                    <a href='' id={widget.id}>{widget.name}</a>
+                                </li>
                             </ul>
                         </div>
                     )

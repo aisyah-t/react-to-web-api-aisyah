@@ -7,29 +7,48 @@ import DeleteWidget from './DeleteWidget'
 class App extends React.Component {
 
   state = {
-    widgets: []
+    widgets: [],
+    showWidgets: true
   }
 
   componentDidMount() {
     // console.log('did mount')
     getWidgets()
-      .then( widgetsApi => {
-        this.setState ({ widgets: widgetsApi })
-      }
-  )}
+      .then(widgetsApi => {
+        this.setState({ widgets: widgetsApi })
+      })
+  }
+
+  addWidget = () => {
+    this.setState({
+      showWidgets: false
+    })
+  }
+
+  editWidget = () => {
+    this.setState({
+      showWidgets: false
+    })
+  }
 
   render() {
     // console.log('render')
     return (
-      <div>
+      <div className="container">
         <h1>Widgets FTW!</h1>
-        <Widgets widgets = {this.state.widgets}/>
-        <AddWidget />
-        <DeleteWidget widgets = {this.state.widgets}/>
+        {this.state.showWidgets
+          ? <Widgets widgets={this.state.widgets} />
+          :
+          <>
+            <AddWidget />
+            <DeleteWidget widgets={this.state.widgets} />
+          </>}
+          <button onClick={this.addWidget}>Add a Widget</button>
+          <button onClick={this.editWidget}>Edit a Widget</button>
       </div>
     )
-
   }
+
 }
 
 export default App
