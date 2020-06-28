@@ -26,4 +26,15 @@ router.post('/', (req, res) => {
     })
 })
 
+router.delete('/:id', (req,res) => {
+  console.log(req.body)
+  // db.deleteWidget(req.body, widgetId)
+  // .then(() => {
+  //   console.log('Delete')
+  // })
+  .catch(err => {
+    res.status(500).send(err.message)
+  })
+})
+
 module.exports = router

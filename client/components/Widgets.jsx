@@ -10,7 +10,7 @@ class Widgets extends React.Component {
                 {this.props.widgets.map(widget => {
                     return (
                         <main key={widget.id}>
-                            <h3>{widget.name}</h3>
+                            <h4>{widget.name}</h4>
                             <ul>
                                 <li>Price: {widget.price}</li>
                                 <li>Manufacturing Group: {widget.mfg}</li>

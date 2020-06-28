@@ -12,7 +12,6 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // console.log('did mount')
     getWidgets()
       .then(widgetsApi => {
         this.setState({ widgets: widgetsApi })
@@ -25,17 +24,27 @@ class App extends React.Component {
     })
   }
 
-  editWidget = () => {
+  deleteWidget = () => {
     this.setState({
       showWidgets: false
     })
   }
 
+  // updateWidget = () => {
+  //   this.setState({
+  //     showWidgets: false
+  //   })
+  // }
+
   render() {
     // console.log('render')
     return (
       <div className="container">
-        <h1>Widgets FTW!</h1>
+        
+        <header>
+          <h1>Widgets FTW!</h1>
+        </header>
+
         {this.state.showWidgets
           ? <Widgets widgets={this.state.widgets} />
           :
@@ -43,8 +52,9 @@ class App extends React.Component {
             <AddWidget />
             <DeleteWidget widgets={this.state.widgets} />
           </>}
-          <button onClick={this.addWidget}>Add a Widget</button>
-          <button onClick={this.editWidget}>Edit a Widget</button>
+        <button onClick={this.addWidget}>Add a Widget</button>
+        <button onClick={this.deleteWidget}>Delete a Widget</button>
+        {/* <button onClick={this.editWidget}>Edit a Widget</button> */}
       </div>
     )
   }

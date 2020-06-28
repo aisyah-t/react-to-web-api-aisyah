@@ -1,6 +1,6 @@
 import request from 'superagent'
 
-const widgetUrl = 'http://localhost:3000/api/v1/widgets/'
+const widgetUrl = '/api/v1/widgets/'
 
 export function getWidgets() {
   return request
@@ -9,7 +9,7 @@ export function getWidgets() {
 }
 
 export function addWidget(widget) {
-  console.log(widget)
+  // console.log(widget)
   return request
     .post(widgetUrl)
     .send(widget)
@@ -18,12 +18,13 @@ export function addWidget(widget) {
     })
 }
 
-export function deleteWidget(widget) {
+export function deleteWidget(widget, widgetId) {
+  console.log(widgetId) //Getting the right widget ID but need to figure out the rest of the function
   console.log(widget)
   return request
-    .post(widgetUrl)
-    .send(widget)
-    .then(response => {
-      return response.body
-    })
+    .send(widgetId)
+    .delete(widget)    
+    .then(
+      console.log(response)
+    )
 }

@@ -31,13 +31,14 @@ class AddWidget extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="four columns">
+                <h3>Add a widget</h3>
                 <label htmlFor="name">Name:</label>
                 <input type="text" name="name" onChange={this.handleChange} />
 
                 <label htmlFor="price">Price:</label>
                 <input type="text" name="price" onChange={this.handleChange} />
-                
+
                 <label htmlFor="mfg">Manufacturing Group:</label>
                 <input type="text" name="mfg" onChange={this.handleChange} />
 
