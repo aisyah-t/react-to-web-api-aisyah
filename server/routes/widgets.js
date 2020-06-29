@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   const newWidget = req.body
-  console.log(newWidget)
+  // console.log(newWidget)
 
   db.saveWidget(newWidget)
     .then(widgetId => {
@@ -26,12 +26,13 @@ router.post('/', (req, res) => {
     })
 })
 
-router.delete('/:id', (req,res) => {
-  console.log(req.body)
-  // db.deleteWidget(req.body, widgetId)
-  // .then(() => {
-  //   console.log('Delete')
-  // })
+router.get('/:id', (req, res) => {
+  console.log(req.params.id)
+  const widgetId = req.params.id
+  db.deleteWidget(widgetId)
+  .then(() => {
+    console.log('DELETING')
+  })
   .catch(err => {
     res.status(500).send(err.message)
   })

@@ -20,7 +20,7 @@ class DeleteWidget extends React.Component {
 
     handleSubmit = (evt) => {
         evt.preventDefault()
-        deleteWidget(this.state.widget, this.state.widget.id)
+        deleteWidget(this.state.widget.id)
         .then()
     }
 
@@ -37,7 +37,6 @@ class DeleteWidget extends React.Component {
                                 {widget.name}
                             </option>
                         )
-                        
                     })}
                 </select>
                 <button onClick={this.handleSubmit}>Delete widget</button>

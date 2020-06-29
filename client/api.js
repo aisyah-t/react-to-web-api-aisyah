@@ -18,13 +18,13 @@ export function addWidget(widget) {
     })
 }
 
-export function deleteWidget(widget, widgetId) {
+export function deleteWidget(widgetId) {
   console.log(widgetId) //Getting the right widget ID but need to figure out the rest of the function
-  console.log(widget)
   return request
+    .get(widgetUrl + widgetId)
     .send(widgetId)
-    .delete(widget)    
-    .then(
-      console.log(response)
-    )
+    .then(response => {
+      console.log(response.body)
+      // return response.body
+    })
 }

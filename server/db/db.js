@@ -23,10 +23,10 @@ function saveWidget(widget, db = connection) {
   })
 }
 
-function deleteWidget(widget, widgetId, db = connection) {
+function deleteWidget(widgetId, db = connection) {
   return db('widgets')
     .where('id', widgetId)
-    .delete(widget)
+    .delete()
 }
 
 // function editWidget(id, db = connection) {
