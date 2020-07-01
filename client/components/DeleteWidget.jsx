@@ -6,18 +6,13 @@ class DeleteWidget extends React.Component {
     widgetId: this.props.widgets[0].id
   }
 
-  handleChange(e) {
-    this.setState(
-      { widgetId: e.target.value }
-    )
+  handleChange = (e) => {
+    this.setState({ widgetId: e.target.value })
   }
 
   handleSubmit = (e) => {
     e.preventDefault()
     deleteWidget(this.state.widgetId)
-    this.setState({
-      widgetId: this.props.widgets[0].id
-    })
   }
 
   render() {

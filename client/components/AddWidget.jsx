@@ -18,7 +18,7 @@ class AddWidget extends React.Component {
         e.preventDefault()
         this.props.addWidget(this.state.widget)
         this.setState({
-            widget:{}
+            widget: {}
         })
     }
 
@@ -26,25 +26,26 @@ class AddWidget extends React.Component {
         return (
             <form onSubmit={this.handleSubmit}>
                 <label>Add a widget:</label>
-                <label >Name: </label>
+
+                <label>Name:
                 <input type="text" name="name" onChange={this.handleChange} />
-                <br />
+                </label>
 
-                <label >Stock level: </label>
+                <label >Stock level:
                 <input type="text" name="inStock" onChange={this.handleChange} />
-                <br />
+                </label>
 
-                <label >MFG: </label>
+                <label >MFG:
                 <input type="text" name="mfg" onChange={this.handleChange} />
-                <br />
+                </label>
 
-                <label >Price: </label>
+                <label >Price:
                 <input type="text" name="price" onChange={this.handleChange} />
-                <br />
+                </label>
 
-                <label >Rating: </label>
+                <label >Rating:
                 <input type="text" name="rating" onChange={this.handleChange} />
-                <br />
+                </label>
 
                 <button type='submit'>NEW WIDGET!</button>
             </form>

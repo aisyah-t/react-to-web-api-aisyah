@@ -9,7 +9,8 @@ class App extends React.Component {
   state = {
     widgets: [],
     buttonClicked: false,
-    deleteButtonClicked: false
+    deleteButtonClicked: false,
+    updateButtonClicked: false
   }
 
   componentDidMount() {
@@ -34,12 +35,12 @@ class App extends React.Component {
     if (this.state.buttonClicked === false) {
       this.setState({
         buttonClicked: true,
-        deleteButtonClicked: false
+        deleteButtonClicked: false,
+        updateButtonClicked: false
       })
     } else if (this.state.buttonClicked === true) {
       this.setState({
-        buttonClicked: false,
-        deleteButtonClicked: false
+        buttonClicked: false
       })
     }
   }
@@ -48,12 +49,26 @@ class App extends React.Component {
     if (this.state.deleteButtonClicked === false) {
       this.setState({
         deleteButtonClicked: true,
-        buttonClicked: false
+        buttonClicked: false,
+        updateButtonClicked: false
       })
     } else if (this.state.deleteButtonClicked === true) {
       this.setState({
-        deleteButtonClicked: false,
-        buttonClicked: false
+        deleteButtonClicked: false
+      })
+    }
+  }
+
+  handleUpdateFormClick = () => {
+    if (this.state.updateButtonClicked === false) {
+      this.setState({
+        updateButtonClicked: true,
+        buttonClicked: false,
+        deleteButtonClicked: false
+      })
+    } else if (this.state.updateButtonClicked === true) {
+      this.setState({
+        updateButtonClicked: false
       })
     }
   }
@@ -65,8 +80,10 @@ class App extends React.Component {
         <Widgets widgets={this.state.widgets} />
         <input type="submit" onClick={this.handleFormClick} value="Add widget" />
         <input type="submit" onClick={this.handleDeleteFormClick} value="Delete widget" />
+        <input type="submit" onClick={this.handleUpdateFormClick} value="Update widget" />
         {this.state.buttonClicked && <AddWidget addWidget={this.addWidget} />}
         {this.state.deleteButtonClicked && <DeleteWidget widgets={this.state.widgets} />}
+        {this.state.updateButtonClicked && <UpdateWidget widgets={this.state.widgets} />}
       </div>
     )
   }
