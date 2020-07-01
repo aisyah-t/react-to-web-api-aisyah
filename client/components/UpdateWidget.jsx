@@ -16,7 +16,7 @@ class UpdateWidget extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    this.props.addWidget(this.state.widget)
+    this.props.updateWidget(this.state.widget)
     this.setState({
       widget: {}
     })
