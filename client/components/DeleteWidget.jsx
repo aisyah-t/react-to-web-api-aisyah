@@ -1,26 +1,36 @@
 import React from 'react'
+import { deleteWidget } from '../api'
 
 class DeleteWidget extends React.Component {
   state = {
-    value: null
+    widgetId: this.props.widgets[0].id
+  }
+
+  handleChange(e) {
+    this.setState(
+      { widgetId: e.target.value }
+    )
   }
 
   handleSubmit = (e) => {
     e.preventDefault()
-    console.log(this.props)
-    console.log(this.state.value)
+    deleteWidget(this.state.widgetId)
+    this.setState({
+      widgetId: this.props.widgets[0].id
+    })
   }
 
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>Pick a widget to delete:</label>
-        <select name="deleteWidget">
+        <select name="deleteWidget" value={this.state.value} onChange={this.handleChange}>
           {this.props.widgets.map((widget) => {
-            return <option key={`delete_${widget.id}`} id={widget.id} value={widget.name}>{widget.name}</option>
+            return <option key={`delete_${widget.id}`} value={widget.id}>{widget.name}</option>
           })
           }
         </select>
+
         <button type='submit' value="Submit">Delete</button>
       </form>
     )
@@ -28,5 +38,3 @@ class DeleteWidget extends React.Component {
 }
 
 export default DeleteWidget
-
-//when handlesubmit is pressed, send value to state, then delete the widget from db with that id

@@ -1,6 +1,4 @@
 import React from 'react'
-import {HashRouter as Router, Link} from 'react-router-dom'
-
 
 import { getWidgets, saveWidget } from '../api.js'
 import Widgets from './Widgets'
@@ -25,11 +23,11 @@ class App extends React.Component {
 
   addWidget = (widget) => {
     saveWidget(widget)
-    .then((widget)=>{
-      this.setState({
-        widgets: widget
+      .then((widget) => {
+        this.setState({
+          widgets: widget
+        })
       })
-    })
   }
 
   handleFormClick = () => {
@@ -63,14 +61,12 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Router>
-          <h1>Wiaadgets FTW!</h1>
-          <Widgets widgets={this.state.widgets} />
-          <input type="submit" onClick={this.handleFormClick} value="Add widget"/>
-          <input type="submit" onClick={this.handleDeleteFormClick} value="Delete widget" />
-          {this.state.buttonClicked && <AddWidget addWidget={this.addWidget}/>}
-          {this.state.deleteButtonClicked && <DeleteWidget widgets={this.state.widgets}/>}
-        </Router>
+        <h1>Wiaadgets FTW!</h1>
+        <Widgets widgets={this.state.widgets} />
+        <input type="submit" onClick={this.handleFormClick} value="Add widget" />
+        <input type="submit" onClick={this.handleDeleteFormClick} value="Delete widget" />
+        {this.state.buttonClicked && <AddWidget addWidget={this.addWidget} />}
+        {this.state.deleteButtonClicked && <DeleteWidget widgets={this.state.widgets} />}
       </div>
     )
   }
