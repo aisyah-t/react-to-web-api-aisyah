@@ -5,13 +5,22 @@ class UpdateWidget extends React.Component {
     widget: {}
   }
 
+  // Up to this component. need to get selecting the widget setting the default state for the field values (and maybe/probably the widget in state), then when updating the values in the fields have them update the state (handlechange). Then when submit button pressed, that should fire off the update call
+
+  // also add isn't working
+
+  handleSelectChange = (e) => {
+    console.log()
+  }
+
+
   handleChange = (e) => {
     this.setState({
       widget: {
         ...this.state.widget,
         [e.target.name]: e.target.value
       }
-    })
+    }, () => console.log(this.state.widget))
   }
 
   handleSubmit = (e) => {
@@ -24,25 +33,36 @@ class UpdateWidget extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>Update a widget:</label>
-        <label >Name: </label>
+      <>
+        <label>Pick a widget to update:
+        <select name="selectWidget" value={this.state.value} onChange={this.handleSelectChange}>
+            {this.props.widgets.map((widget) => {
+              return <option key={`select_${widget.id}`} value={widget.id}>{widget.name}</option>
+            })
+            }
+          </select>
+        </label>
+
+        <form onSubmit={this.handleSubmit}>
+          <label >Name:
         <input type="text" name="name" onChange={this.handleChange} />
-
-        <label >Stock level: </label>
+          </label>
+          <label >Stock level:
         <input type="text" name="inStock" onChange={this.handleChange} />
-
-        <label >MFG: </label>
+          </label>
+          <label >MFG:
         <input type="text" name="mfg" onChange={this.handleChange} />
-
-        <label >Price: </label>
+          </label>
+          <label >Price:
         <input type="text" name="price" onChange={this.handleChange} />
-
-        <label >Rating: </label>
+          </label>
+          <label >Rating:
         <input type="text" name="rating" onChange={this.handleChange} />
+          </label>
 
-        <button type='submit'>NEW WIDGET!</button>
-      </form>
+          <button type='submit'>Update</button>
+        </form>
+      </>
     )
   }
 }

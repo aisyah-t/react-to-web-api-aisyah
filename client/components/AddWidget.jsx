@@ -28,7 +28,7 @@ class AddWidget extends React.Component {
                 <label>Add a widget:</label>
 
                 <label>Name:
-                <input type="text" name="name" onChange={this.handleChange} />
+                <input type="text" name="name" value={this.state.name} onChange={this.handleChange} />
                 </label>
 
                 <label >Stock level:

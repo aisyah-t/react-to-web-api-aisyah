@@ -4,6 +4,7 @@ import { getWidgets, saveWidget } from '../api.js'
 import Widgets from './Widgets'
 import AddWidget from './AddWidget'
 import DeleteWidget from './DeleteWidget'
+import UpdateWidget from './UpdateWidget'
 
 class App extends React.Component {
   state = {

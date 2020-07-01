@@ -42,7 +42,7 @@ router.delete('/:id', (req, res) => {
     })
 })
 
-router.put('/:id', (req, res) => {
+router.patch('/:id', (req, res) => {
   const widgetId = req.params.id
   const widget = req.body
   db.updateWidget(widgetId, widget)
