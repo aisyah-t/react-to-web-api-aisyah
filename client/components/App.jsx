@@ -7,16 +7,17 @@ import request from 'superagent'
 class App extends React.Component {
   state = {
     Widgets: [],
-    editmode: false
+    editmode: false,
+    quote: "none"
   }
 
   componentDidMount() {
     console.log("mounted")
+    this.externalApi()
     getWidgets().then(data => {
       console.log("got Widgets")
       this.setState({
         Widgets: data,
-        quote: "none"
       })
     })
 
@@ -35,9 +36,7 @@ class App extends React.Component {
         })
       })
   }
-  componentDidMount() {
-    this.externalApi()
-  }
+
   render() {
     console.log(this.state.Widgets)
    

@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 })
 
 
-router.post('/delete/', (req, res) => {
+router.delete('/delete/', (req, res) => {
   console.log("hit route for delete")
   console.log(req.body)
   db.deletewid(req.body)

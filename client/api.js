@@ -22,7 +22,7 @@ export function deletewid(data) {
 console.log("trying to delete widget")
 console.log(data)
   return request
-   .post(deleteurl)
+   .delete(deleteurl)
    .send({data})
    .then(response => response.body)
  
