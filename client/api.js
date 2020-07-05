@@ -16,3 +16,11 @@ export function makeWidgetApi (widget) {
     .send(widget)
     .then(response => response.body)
 }
+
+export function updateWidgetApiFunction (widget){
+  console.log ('api update widget data -----' , widget)
+  return request
+  .put(widgetUrl)
+  .send(widget)
+  .then(response => response.body)
+}

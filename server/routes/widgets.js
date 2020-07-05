@@ -14,12 +14,20 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  console.log('-----server side request body ' , req.body)
-  // console.log(req.body)
-
   db.saveWidget(req.body)
     .then(widgets => {
       res.send(widgets)
+    })
+    .catch(err => {
+      res.status(500).send(err.message)
+    })
+})
+
+router.put('/', (req, res) => {
+  console.log('data in new server side route' , req.body)
+  db.updateWidget(req.body)
+    .then(updatedWidget => {
+      res.send(updatedWidget)
     })
     .catch(err => {
       res.status(500).send(err.message)

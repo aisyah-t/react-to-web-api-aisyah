@@ -31,8 +31,8 @@ class Form extends React.Component {
   
   render () {
     return (
-      <div>
-      <h3>Add a new widget!</h3>
+      <div id="updateFormStyle">
+      <h2>Add A New Widget</h2>
       <form className = 'formDiv'onSubmit={this.makeWidget} >
         <label >Name</label>
         <input type="text" name="name"  onChange={this.handleChange}/>

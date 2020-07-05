@@ -2,6 +2,7 @@ import React from 'react'
 import {getWidgets} from '../api'
 import Widget from './Widget'
 import Form from './Form'
+import UpdateWidget from './Update Widget'
 
 class App extends React.Component {
 
@@ -10,18 +11,16 @@ state = {
 }
 
   componentDidMount() {
-    console.log('did mount')
+
     getWidgets()
     .then(data => {
-      // console.log(data)
-      // console.log(typeof data)
       this.setState({
         widgets: data
       })
     })
   }
     render () {
-      console.log('render')
+
       return (
       <div>
         <h1>Here are some widgets:</h1>
@@ -34,6 +33,7 @@ state = {
             )   
           })}
         </ul>
+          <UpdateWidget/>
           <Form/>
       </div>
       )

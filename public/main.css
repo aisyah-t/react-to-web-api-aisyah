@@ -8,6 +8,7 @@ body {
 .formDiv {
   display: flex;
   flex-direction: column;
+  padding: 15px;
 } 
 
 .widget-details .visible {
@@ -18,3 +19,7 @@ body {
   display: none;
 }
 
+#updateFormStyle {
+margin-top: 46px;
+color: cornflowerblue;
+}

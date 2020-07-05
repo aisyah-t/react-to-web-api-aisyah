@@ -4,7 +4,8 @@ const connection = require('knex')(config)
 
 module.exports = {
   getWidgets,
-  saveWidget
+  saveWidget,
+  updateWidget
 }
 
 function getWidgets(db = connection) {
@@ -19,5 +20,18 @@ function saveWidget(widget, db = connection) {
       mfg: widget.mfg,
       inStock: widget.inStock,
       rating: widget.rating
+  })
+}
+
+function updateWidget (widget, db = connection) {
+  console.log('data in new db function' , widget)
+  return db ('widgets')
+  .where ('name' , '=', widget.originalName)
+  .update ({
+    name: widget.newName,
+    price: widget.price ,
+    mfg: widget.mfg ,
+    inStock: widget.inStock ,
+    rating: widget.Rating,
   })
 }
