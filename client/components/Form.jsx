@@ -6,7 +6,7 @@ class Form extends React.Component {
         name: '',
         price: '',
         mfg: '',
-        inStock: ''
+        inStock: '',
     }
 
 

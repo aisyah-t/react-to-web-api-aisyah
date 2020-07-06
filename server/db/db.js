@@ -6,6 +6,7 @@ module.exports = {
   getWidgets,
   saveWidget,
   deleteWidget,
+  updateWidget,
 }
 
 function getWidgets(db = connection) {
@@ -24,4 +25,8 @@ function saveWidget(widget, db = connection) {
 
 function deleteWidget(id, db = connection) {
   return db('widgets').delete().where('id', id)
+}
+
+function updateWidget(widget, db = connection) {
+  return db('widgets').update(widget).where('id', widget.id)
 }

@@ -20,23 +20,6 @@ class App extends React.Component {
     })
   }
 
-  //   handleChange = event => {
-  //     this.setState({
-  //         [event.target.name]: event.target.value
-  //     })
-  // }
-
-  // handleSubmit = (event) => {
-  //   console.log(this.props)
-  //   event.preventDefault()
-  //   this.props.addData(this.props)
-  // }
-
-  //   addData = () => {
-  //     console.log(this.state)
-  //   }
-
-
   componentDidMount() {
     getWidgets()
       .then((widgetData) => {
@@ -57,14 +40,13 @@ class App extends React.Component {
 
 
   render() {
-    // this.saveData(4)
     return (
       <div>
         <h1>Widgets FTW!</h1>
         <ul>
           {this.state.widgets.map((element) => {
             return <Widget id={element.id} key={element.id} name={element.name} price={element.price} mfg={element.mfg} inStock={element.inStock} />
-          })}
+            })}
         </ul>
         {this.state.showForm && <Form handleChange={this.handleChange} />}
         <button id="formButton" onClick={this.addWidget}>Add Widget</button>

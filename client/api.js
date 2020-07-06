@@ -20,3 +20,11 @@ export function deleteWidget(widgetId) {
   .then(response => response.body)
 }
 
+export function updateWidget(widget) {
+  delete widget.showUpdate
+  // console.log(widget)
+  return request.put(widgetUrl)
+  .send(widget)
+  .then(response => response.body)
+}
+
