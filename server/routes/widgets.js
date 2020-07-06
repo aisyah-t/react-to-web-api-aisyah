@@ -15,7 +15,6 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   const newWidget = req.body
-  // console.log(newWidget)
 
   db.saveWidget(newWidget)
     .then(widgetId => {
@@ -27,8 +26,8 @@ router.post('/', (req, res) => {
 })
 
 router.delete('/:id', (req, res) => {
-  // console.log(req.params.id)
   const widgetId = req.params.id
+  
   db.deleteWidget(widgetId)
     .then(() => {
       // res.send(JSON.stringify({}))
@@ -47,8 +46,6 @@ router.get('/:id', (req, res) => {
 })
 
 router.patch('/:id', (req, res) => {
-  console.log(req.params)
-  console.log(req.body)
   const widgetId = req.params.id
   const widget = req.body
   

@@ -46,17 +46,15 @@ class UpdateWidget extends React.Component {
 
     handleSubmit = (evt) => {
         evt.preventDefault()
-        // console.log(this.state)
         updateWidget(this.state.widget.id, this.state.widget)
             .then(widget => {
-                // console.log(this.state.widget)
                 this.props.refresh()
                 this.props.showWidgets()
             })
     }
 
     render() {
-        // console.log(this.props)
+
         return (
             <form className="four columns">
                 <h3>Update a widget</h3>

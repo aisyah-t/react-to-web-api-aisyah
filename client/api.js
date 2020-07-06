@@ -9,7 +9,6 @@ export function getWidgets() {
 }
 
 export function addWidget(widget) {
-  // console.log(widget)
   return request
     .post(widgetUrl)
     .send(widget)
@@ -19,11 +18,9 @@ export function addWidget(widget) {
 }
 
 export function deleteWidget(widgetId) {
-  // console.log(widgetId) //Getting the right widget ID but need to figure out the rest of the function
   return request
     .del(widgetUrl + widgetId)
     .then(response => {
-      // console.log(response)
       return response.body
     })
 }
@@ -37,13 +34,10 @@ export function getWidget(widgetId) {
 }
 
 export function updateWidget(widgetId, widget) {
-  console.log('Widget ID is: ' + widgetId)
-  console.log(widget)
   return request
     .patch(widgetUrl + widgetId)
     .send(widget)
     .then(response => {
-      console.log(response.body)
-      // return response.body
+      return response.body
     })
 }
