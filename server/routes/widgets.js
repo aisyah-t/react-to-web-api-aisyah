@@ -29,5 +29,13 @@ router.delete('/:id', (req, res) => {
   })
 })
 
+router.put('/', (req, res) => {
+  db.updateWidget(req.body)
+  .then(widget => console.log(widget))
+  .catch(err => {
+    res.status(500).send(err.message)
+  })
+})
+
 
 module.exports = router

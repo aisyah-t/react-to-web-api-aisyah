@@ -23,3 +23,10 @@ export function deleteWidget(id) {
     .delete(widgetUrl + id)
     .then(response => response.body)
 }
+
+export function updateWidget(widget) {
+  delete widget.showUpdate
+  return request.put(widgetUrl)
+  .send(widget)
+  .then(response => response.body)
+}
