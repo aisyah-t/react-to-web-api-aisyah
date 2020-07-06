@@ -1,45 +1,49 @@
 import React from 'react'
+import { addNewWidget } from '../api'
 
 class Form extends React.Component {
-    // state ={
-    //     name: '',
-    //     price: '',
-    //     mfg: '',
-    //     inStock: ''
-    // }
+    state ={
+        name: '',
+        price: '',
+        mfg: '',
+        inStock: ''
+    }
 
 
-    // handleChange = event => {
-    //     this.setState({
-    //         [event.target.name]: event.target.value
-    //     })
-    // }
+    handleChange = event => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
 
     
 
-    // handleSubmit = (event) => {
-    //     console.log(this.props)
-    //     event.preventDefault()
-    //     this.props.addData(this.props)
-    //   }
-
+    handleSubmit = (event) => {
+        event.preventDefault()
+        // console.log(this.state)
+        addNewWidget(this.state)
+        document.getElementById('formName').value = ''
+        document.getElementById('formPrice').value = ''
+        document.getElementById('formMFG').value = ''
+        document.getElementById('formStock').value = ''
+      }
     render() {
-
+        
         
         return (
             <>
                 <form onSubmit={this.handleSubmit}>
                     <label method="post">Name: 
-                        <input type="text" name="name" onChange={this.props.handleChange}></input>
+                        <input id="formName" type="text" name="name" onChange={this.handleChange}></input>
                     </label>
                     <label>Price: 
-                        <input type="text" name="price" onChange={this.props.handleChange}></input>
+                        <input id="formPrice" type="text" name="price" onChange={this.handleChange}></input>
                     </label>
                     <label >MFG: 
-                        <input type="text" name="mfg" onChange={this.props.handleChange}></input>
+                        <input id="formMFG" type="text" name="mfg" onChange={this.handleChange}></input>
                     </label>
                     <label>Number in stock: 
-                        <input type="text" name="inStock" onChange={this.props.handleChange}></input>
+                        <input id="formStock" type="text" name="inStock" onChange={this.handleChange}></input>
                     </label>
                     <input type="submit"></input>
                 </form>

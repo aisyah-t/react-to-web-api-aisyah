@@ -4,7 +4,8 @@ const connection = require('knex')(config)
 
 module.exports = {
   getWidgets,
-  saveWidget
+  saveWidget,
+  deleteWidget,
 }
 
 function getWidgets(db = connection) {
@@ -19,4 +20,8 @@ function saveWidget(widget, db = connection) {
       mfg: widget.mfg,
       inStock: widget.inStock
   })
+}
+
+function deleteWidget(id, db = connection) {
+  return db('widgets').delete().where('id', id)
 }

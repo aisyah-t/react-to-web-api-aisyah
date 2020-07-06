@@ -1,5 +1,5 @@
 import React from 'react'
-import Api, { getWidgets } from '../api'
+import { getWidgets } from '../api'
 import Widget from './Widget'
 import Form from './Form'
 
@@ -20,22 +20,21 @@ class App extends React.Component {
     })
   }
 
-  handleChange = event => {
-    this.setState({
-        [event.target.name]: event.target.value
-    })
-}
+  //   handleChange = event => {
+  //     this.setState({
+  //         [event.target.name]: event.target.value
+  //     })
+  // }
 
-handleSubmit = (event) => {
-  console.log(this.props)
-  event.preventDefault()
-  this.props.addData(this.props)
-}
+  // handleSubmit = (event) => {
+  //   console.log(this.props)
+  //   event.preventDefault()
+  //   this.props.addData(this.props)
+  // }
 
-  addData = () => {
-    console.log(this.state)
-
-  }
+  //   addData = () => {
+  //     console.log(this.state)
+  //   }
 
 
   componentDidMount() {
@@ -46,6 +45,17 @@ handleSubmit = (event) => {
         })
       })
   }
+
+  componentDidUpdate() {
+    getWidgets()
+      .then((widgetData) => {
+        this.setState({
+          widgets: widgetData
+        })
+      })
+  }
+
+
   render() {
     // this.saveData(4)
     return (
@@ -53,10 +63,10 @@ handleSubmit = (event) => {
         <h1>Widgets FTW!</h1>
         <ul>
           {this.state.widgets.map((element) => {
-            return <Widget key={element.id} name={element.name} price={element.price} mfg={element.mfg} inStock={element.inStock} />
+            return <Widget id={element.id} key={element.id} name={element.name} price={element.price} mfg={element.mfg} inStock={element.inStock} />
           })}
         </ul>
-        {this.state.showForm && <Form handleChange={this.handleChange} addData={this.addData} />}
+        {this.state.showForm && <Form handleChange={this.handleChange} />}
         <button id="formButton" onClick={this.addWidget}>Add Widget</button>
       </div>
     )
