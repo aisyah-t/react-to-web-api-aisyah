@@ -4,10 +4,21 @@ import Widget from './Widget'
 import Form from './Form'
 import UpdateWidget from './Update Widget'
 
+
+
+
 class App extends React.Component {
 
+
+
+widgetToUpdate = (widgetToUpdate) => {
+    console.log('this is data in app -- ' , widgetToUpdate)
+    this.setState ({widgetData: widgetToUpdate})
+  }
+  
 state = {
-  widgets: []
+  widgets: [],
+  widgetData: {}
 }
 
   componentDidMount() {
@@ -28,12 +39,12 @@ state = {
           {this.state.widgets.map(widget => {
             return (
               <>
-              <Widget data={widget} />
+              <Widget data={widget} widgetToUpdate={this.widgetToUpdate} />
               </>
             )   
           })}
         </ul>
-          <UpdateWidget/>
+          <UpdateWidget data={this.state.widgetData}  />
           <Form/>
       </div>
       )

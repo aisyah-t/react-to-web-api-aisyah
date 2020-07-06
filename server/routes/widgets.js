@@ -27,13 +27,23 @@ router.put('/', (req, res) => {
   console.log('data in new server side route' , req.body)
   db.updateWidget(req.body)
     .then(updatedWidget => {
+      res.json(updatedWidget)
+    })
+    .catch(err => {
+      console.log(err)
+      res.status(500).send(err.message)
+    })
+})
+
+router.delete('/', (req, res) => {
+  console.log('data in delete server side route' , req.body)
+  db.deleteWidget(req.body)
+    .then(updatedWidget => {
       res.send(updatedWidget)
     })
     .catch(err => {
       res.status(500).send(err.message)
     })
 })
-
-
 
 module.exports = router

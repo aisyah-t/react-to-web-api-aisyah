@@ -1,5 +1,5 @@
 import React from 'react'
-import {widgetToUpdate} from './Update Widget'
+import {deleteWidgetApiFunction} from '../api'
 
 
 
@@ -10,12 +10,17 @@ class Widget extends React.Component {
   
   
 
-  handleButtonClick = event => {
+  handleUpdate = event => {
     console.log('button being clicked!')
-    widgetToUpdate('billy')
+    this.props.widgetToUpdate(this.props.data)
 
   }
+
+
   
+  deleteWidget = event => {
+    deleteWidgetApiFunction(this.props.data)
+  }
   
   
   render() {
@@ -26,7 +31,8 @@ class Widget extends React.Component {
       <p>Price: {data.price}</p>
       <p>MFG: {data.mfg}</p>
       <p>Remaining Stock: {data.inStock}</p>
-      {/* <button onClick = {this.handleButtonClick} >update</button> */}
+      <button onClick = {this.handleUpdate}> Update </button>
+      <button onClick = {this.deleteWidget}> Delete  </button>
       </>
     )
       

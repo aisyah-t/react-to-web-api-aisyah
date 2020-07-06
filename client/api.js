@@ -22,5 +22,15 @@ export function updateWidgetApiFunction (widget){
   return request
   .put(widgetUrl)
   .send(widget)
+  .then(response => 
+    { console.log(response.body)
+      return response.body})
+}
+
+export function deleteWidgetApiFunction (widget) {
+  console.log ('api delete widget data -----' , widget)
+  return request
+  .delete(widgetUrl)
+  .send(widget)
   .then(response => response.body)
 }

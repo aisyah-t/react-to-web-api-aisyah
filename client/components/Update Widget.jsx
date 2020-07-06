@@ -3,17 +3,11 @@ import {updateWidgetApiFunction} from '../api'
 
 
 
-
-export function widgetToUpdate (widgetToUpdate) {
-    console.log('this is data in update widget -- ' , widgetToUpdate)
-    return widgetToUpdate
-  }
-
 class UpdateWidget extends React.Component {
 
     state = {
-      originalName: '',
-      newName: '',
+        originalName: '',
+        newName: '',
         price: '',
         mfg: '',
         inStock: '',
@@ -22,40 +16,58 @@ class UpdateWidget extends React.Component {
     
     UpdateWidget = event => {
         event.preventDefault()
+        console.log(this.props.data)
         updateWidgetApiFunction(this.state)
+
     }
 
     handleChange = event => {
     
+      this.setState({
+        [event.target.name]: event.target.value
+      })
+    }
+
+    componentWillReceiveProps(nextProps) {
+      
+      if(nextProps.data !== this.props.data) {
+
         this.setState({
-          [event.target.name]: event.target.value
+          originalName: nextProps.data.name,
+          price: nextProps.data.price,
+          mfg: nextProps.data.mfg,
+          inStock: nextProps.data.inStock,
+          rating: nextProps.data.rating,
         })
       }
-    
+    }
+
     render () {
+      console.log(this.props)
         return (
+          
             <div id="updateFormStyle" >
             <h2>Update A Widget</h2>
             <form className = 'formDiv'  onSubmit={this.UpdateWidget}>
             
             <label >Original Name</label>
-            <input type="text" name="originalName" onChange={this.handleChange} defaultValue='--- Enter Original Widget Name. Ensure Spelling Correct! ---' />
+            <input type="text" name="originalName" onChange={this.handleChange} defaultValue={this.props.data.name}  />
 
             <label > New Name</label>
-            <input type="text" name="newName" onChange={this.handleChange} />
+            <input type="text" name="newName" onChange={this.handleChange}  />
 
 
 {/* Trying to get updat button to auto-populate form */}
             {/* defaultValue={widgetToUpdate} */}
     
             <label >Price</label>
-            <input type="text" name="price" onChange={this.handleChange}/>
+            <input type="text" name="price" onChange={this.handleChange} defaultValue={this.props.data.price}/>
     
             <label >MFG</label>
-            <input type="text" name="mfg" onChange={this.handleChange} />
+            <input type="text" name="mfg" onChange={this.handleChange} defaultValue={this.props.data.mfg} />
     
             <label >Remaining Stock</label>
-            <input type="text" name="inStock" onChange={this.handleChange} />
+            <input type="text" name="inStock" onChange={this.handleChange} defaultValue={this.props.data.inStock} />
     
             <label >Rating</label>
             <input type="text" name="rating" onChange={this.handleChange}/>
