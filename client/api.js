@@ -16,3 +16,9 @@ export function addWidget(widget){
  .then( response => req.body) // if we wanted to show individual widget use this
    
 }
+
+export function delWidget(id) {
+  return request.delete(`/api/v1/widgets/${id}`)
+  .then(res => res)
+  .cathch(errorHandler('DELETE', '/api/v1/widgets/:id'))
+}

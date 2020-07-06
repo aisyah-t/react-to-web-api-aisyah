@@ -33,7 +33,7 @@ class Form extends React.Component {
   render() {
     return (
 
-      <form onSubmit={this.handleSubmit}>
+      <form className="form" onSubmit={this.handleSubmit}>
         <label>
           Name:
           <input type="text" name="name" onChange={this.handleChange}/>
@@ -49,10 +49,10 @@ class Form extends React.Component {
           <input type="text" name="mfg" onChange={this.handleChange}/>
         </label>
 
-        <lable>
+        <label>
           InStock:
           <input type="text" name="inStock" onChange={this.handleChange}/>
-        </lable>
+        </label>
         
         <label>
           Rating:

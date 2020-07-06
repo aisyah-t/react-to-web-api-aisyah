@@ -1,6 +1,6 @@
 import React from 'react'
 // import api from '../api'
-import { getWidgets } from '../api'
+import { getWidgets, delWidget } from '../api'
 import Widget from './Widget'
 import Form from './Form'
 
@@ -21,7 +21,12 @@ class App extends React.Component {
   }
 
   componentDidUpdate() {
-
+    getWidgets()
+    .then(widget => {
+      this.setState({
+        widget: widget
+      })
+    })
   }
 
   refreshWidgets = () => {
