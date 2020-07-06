@@ -34,7 +34,7 @@ class App extends React.Component {
         <h1>Widgets FTW!</h1>
         <ul>
           {this.state.widgets.map(widget => {
-            return <Widget className="" name={widget.name} price={widget.price} mfg={widget.mfg} inStock={widget.inStock} />
+            return <Widget id={widget.id} key={widget.id} name={widget.name} price={widget.price} mfg={widget.mfg} inStock={widget.inStock} />
           })}
         </ul>
         <h2>Add another widget!</h2>

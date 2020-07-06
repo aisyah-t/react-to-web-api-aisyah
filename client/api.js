@@ -16,3 +16,10 @@ export function addWidget(widget) {
       return response.body
     })
 }
+
+export function deleteWidget(id) {
+  console.log(id)
+  return request
+    .delete(widgetUrl + id)
+    .then(response => response.body)
+}
