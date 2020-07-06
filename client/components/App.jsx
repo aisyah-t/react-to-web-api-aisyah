@@ -12,6 +12,10 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    this.refreshWidgets()
+  }
+
+  refreshWidgets = () => {
     getWidgets()
       .then(widgetsApi => {
         this.setState({ widgets: widgetsApi })
@@ -30,6 +34,12 @@ class App extends React.Component {
     })
   }
 
+  showWidgets = () => {
+    this.setState({
+      showWidgets: true
+    })
+  }
+
   // updateWidget = () => {
   //   this.setState({
   //     showWidgets: false
@@ -40,7 +50,7 @@ class App extends React.Component {
     // console.log('render')
     return (
       <div className="container">
-        
+
         <header>
           <h1>Widgets FTW!</h1>
         </header>
@@ -49,8 +59,8 @@ class App extends React.Component {
           ? <Widgets widgets={this.state.widgets} />
           :
           <>
-            <AddWidget />
-            <DeleteWidget widgets={this.state.widgets} />
+            <AddWidget refresh={this.refreshWidgets} showWidgets={this.showWidgets}/>
+            <DeleteWidget widgets={this.state.widgets} refresh={this.refreshWidgets} showWidgets={this.showWidgets} />
           </>}
         <button onClick={this.addWidget}>Add a Widget</button>
         <button onClick={this.deleteWidget}>Delete a Widget</button>

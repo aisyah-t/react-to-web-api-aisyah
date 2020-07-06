@@ -16,7 +16,10 @@ class AddWidget extends React.Component {
     handleSubmit = (evt) => {
         evt.preventDefault()
         addWidget(this.state.widget)
-        .then()
+        .then(id => {
+            this.props.refresh()
+            this.props.showWidgets()
+        })
     }
 
     handleChange = (evt) => {

@@ -19,12 +19,12 @@ export function addWidget(widget) {
 }
 
 export function deleteWidget(widgetId) {
-  console.log(widgetId) //Getting the right widget ID but need to figure out the rest of the function
+  // console.log(widgetId) //Getting the right widget ID but need to figure out the rest of the function
   return request
     .del(widgetUrl + widgetId)
     // .get(widgetUrl)
     .then(response => {
-      console.log(response)
-      // return response
+      // console.log(response)
+      return response.body
     })
 }

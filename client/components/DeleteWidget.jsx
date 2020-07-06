@@ -20,7 +20,13 @@ class DeleteWidget extends React.Component {
 
     handleSubmit = (evt) => {
         evt.preventDefault()
+        console.log(this.props)
         deleteWidget(this.state.widget.id)
+            .then(id => {
+                // console.log(id)
+                this.props.refresh()
+                this.props.showWidgets()
+            })
         this.setState({
             widget: {
                 id: ''
@@ -37,7 +43,7 @@ class DeleteWidget extends React.Component {
                 <select name="id" value={this.state.value} onChange={this.handleChange}>
                     {this.props.widgets.map(widget => {
                         return (
-                            <option value={widget.id}>
+                            <option value={widget.id} key={widget.id}>
                                 {widget.name}
                             </option>
                         )
