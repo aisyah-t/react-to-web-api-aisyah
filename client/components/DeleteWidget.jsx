@@ -21,7 +21,11 @@ class DeleteWidget extends React.Component {
     handleSubmit = (evt) => {
         evt.preventDefault()
         deleteWidget(this.state.widget.id)
-        .then()
+        this.setState({
+            widget: {
+                id: ''
+            }
+        })
     }
 
     render() {

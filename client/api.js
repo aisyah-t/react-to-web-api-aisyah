@@ -21,10 +21,10 @@ export function addWidget(widget) {
 export function deleteWidget(widgetId) {
   console.log(widgetId) //Getting the right widget ID but need to figure out the rest of the function
   return request
-    .get(widgetUrl + widgetId)
-    .send(widgetId)
+    .del(widgetUrl + widgetId)
+    // .get(widgetUrl)
     .then(response => {
-      console.log(response.body)
-      // return response.body
+      console.log(response)
+      // return response
     })
 }

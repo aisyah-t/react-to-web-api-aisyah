@@ -26,7 +26,7 @@ function saveWidget(widget, db = connection) {
 function deleteWidget(widgetId, db = connection) {
   return db('widgets')
     .where('id', widgetId)
-    .delete()
+    .del()
 }
 
 // function editWidget(id, db = connection) {
