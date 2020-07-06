@@ -36,7 +36,32 @@ router.delete('/:id', (req, res) => {
     })
     .catch(err => {
       res.status(500).send(err.message)
-  })
+    })
+})
+
+router.get('/:id', (req, res) => {
+  db.getWidget(req.params.id)
+    .then(widget => {
+      res.send(widget)
+    })
+})
+
+router.patch('/:id', (req, res) => {
+  console.log(req.params)
+  console.log(req.body)
+  const widgetId = req.params.id
+  const widget = req.body
+  
+  db.updateWidget(widgetId, widget)
+    .then(() => {
+      return db.getWidget(widgetId)
+    })
+    .then(widget => {
+      res.json(widget)
+    })
+    .catch(err => {
+      res.status(500).send(err.message)
+    })
 })
 
 module.exports = router

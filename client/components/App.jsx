@@ -3,6 +3,7 @@ import { getWidgets } from '../api'
 import Widgets from './Widgets'
 import AddWidget from './AddWidget'
 import DeleteWidget from './DeleteWidget'
+import UpdateWidget from './UpdateWidget'
 
 class App extends React.Component {
 
@@ -40,11 +41,11 @@ class App extends React.Component {
     })
   }
 
-  // updateWidget = () => {
-  //   this.setState({
-  //     showWidgets: false
-  //   })
-  // }
+  updateWidget = () => {
+    this.setState({
+      showWidgets: false
+    })
+  }
 
   render() {
     // console.log('render')
@@ -56,15 +57,21 @@ class App extends React.Component {
         </header>
 
         {this.state.showWidgets
-          ? <Widgets widgets={this.state.widgets} />
+          ? <>
+            <Widgets widgets={this.state.widgets} />
+            <button onClick={this.addWidget}>Add a Widget</button>
+            <button onClick={this.deleteWidget}>Delete a Widget</button>
+            <button onClick={this.updateWidget}>Update a Widget</button>
+          </>
           :
           <>
-            <AddWidget refresh={this.refreshWidgets} showWidgets={this.showWidgets}/>
+            <AddWidget refresh={this.refreshWidgets} showWidgets={this.showWidgets} />
             <DeleteWidget widgets={this.state.widgets} refresh={this.refreshWidgets} showWidgets={this.showWidgets} />
+            <UpdateWidget widgets={this.state.widgets} refresh={this.refreshWidgets} showWidgets={this.showWidgets} />
           </>}
-        <button onClick={this.addWidget}>Add a Widget</button>
+        {/* <button onClick={this.addWidget}>Add a Widget</button>
         <button onClick={this.deleteWidget}>Delete a Widget</button>
-        {/* <button onClick={this.editWidget}>Edit a Widget</button> */}
+        <button onClick={this.updateWidget}>Update a Widget</button> */}
       </div>
     )
   }

@@ -20,7 +20,7 @@ class DeleteWidget extends React.Component {
 
     handleSubmit = (evt) => {
         evt.preventDefault()
-        console.log(this.props)
+        // console.log(this.props)
         deleteWidget(this.state.widget.id)
             .then(id => {
                 // console.log(id)
@@ -57,4 +57,3 @@ class DeleteWidget extends React.Component {
 
 
 export default DeleteWidget
-
